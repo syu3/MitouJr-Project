@@ -1,0 +1,33 @@
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- BootstrapのCSS読み込み -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery読み込み -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- BootstrapのJS読み込み -->
+  <script src="js/bootstrap.min.js"></script>
+</head>
+<script>
+alert("テスト");
+// fetch('test.txt')
+//   .then((response) => response.text())
+//   .then((text) => console.log(text))
+//   .catch((error) => console.log(error));
+  setInterval(function(){
+        alert("はいはいはいはいはい");
+    },1000);
+jQuery.ajax(
+  "fff.php",{
+    type: "POST",
+    dataType: 'text',
+    data: {//nameとvalueをセットでオブジェクトのなかに定義する
+      "code" : 18,
+      "name" : "mogeri",
+    },
+      success: function(post){
+        console.log(post);
+       }
+  }
+);
+</script>

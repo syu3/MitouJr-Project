@@ -14,8 +14,12 @@
         <a href="http://typingcode.16mb.com/index1234567890.html">サイトを見る</a></font>
     </center>
   </div>
+  <!-- <iframe src='index.html' name='sample' width='200' height='150'></iframe> -->
+
+
 </body>
 <script>
+var num = 0;
   document.getElementById("loading").style.display="block";
 
 
@@ -27,14 +31,44 @@
   function CloseWindow() {
     window.close();
   }
+
+  var reloadtime = function(){
+    // window.open('index.html', '_blank');
+  //   num = localStorage.getItem("KeyName");
+  //   console.log(num);
+  //   alert("numは"+num);
+  //   if(num == "NaN"){
+  //     alert("nulnulnulnul");
+  //     num == 1;
+      // location.reload();
+  //     localStorage.setItem("KeyName",num);
+  //   }else{
+  //     alert("それ以外");
+  //     num ++;
+  //     alert(num);
+  //     localStorage.setItem("KeyName",num);
+  //     if(num == 1){
+  //
+  //   }else{
+  //
+  //   }
+  // }
+  }
+  setTimeout(reloadtime, 22000);
+
+
+
+
+
+
   var count = 0;
   var countup = function(){
     // alert("はいhフィアhfジョイあdjフォイアfじゃおいf兵オアhfヂオヒアヒアヒアヒアfひはい");
     document.getElementById("loading").style.display="none";
     document.getElementById("ok").style.display="block";
-    <?php $ch = curl_init();$localfile = 'index1234567890.html';$fp = fopen($localfile, 'r');curl_setopt($ch, CURLOPT_URL, "ftp://u613191873:Syu2004320@typingcode.16mb.com/$localfile");curl_setopt($ch, CURLOPT_UPLOAD, 1);curl_setopt($ch, CURLOPT_INFILE, $fp);curl_setopt($ch, CURLOPT_INFILESIZE, filesize($localfile));curl_exec($ch);$error_no = curl_errno($ch);curl_close($ch); ?>
-    <?php $ch = curl_init();$localfile = 'index1234567890.html';$fp = fopen($localfile, 'r');curl_setopt($ch, CURLOPT_URL, "ftp://u613191873:Syu2004320@typingcode.16mb.com/$localfile");curl_setopt($ch, CURLOPT_UPLOAD, 1);curl_setopt($ch, CURLOPT_INFILE, $fp);curl_setopt($ch, CURLOPT_INFILESIZE, filesize($localfile));curl_exec($ch);$error_no = curl_errno($ch);curl_close($ch); ?>
-
+    <?php $ch = curl_init();$localfile = 'index1234567890.html';$fp = fopen($localfile, 'r');curl_setopt($ch, CURLOPT_URL, "ftp://u613191873:Syu2004320@typingcode.16mb.com/$localfile");curl_setopt($ch, CURLOPT_UPLOAD, 1);curl_setopt($ch, CURLOPT_INFILE, $fp);curl_setopt($ch, CURLOPT_INFILESIZE, filesize($localfile));curl_exec($ch); curl_close($ch);?>
+        alert(<?php $_POST['code'] ?>);
+    alert("はいはいはい");
   }
   setTimeout(countup, 25000);
 
@@ -47,6 +81,10 @@
 
   fwrite($a, $data);
   fclose($a);
+
+
+
+
  // echo $a;
 // echo "は��?は��?は��?は��?は��?";
 // $file = 'sentwo.png';

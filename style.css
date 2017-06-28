@@ -1,0 +1,84 @@
+body{
+	margin: 0;
+	font-family: Lato, "Noto Sans JP", "ü‡ÉSÉVÉbÉN Medium", "ü‡ÉSÉVÉbÉNëÃ", "Yu Gothic Medium", YuGothic, "ÉqÉâÉMÉmäpÉS ProN", "Hiragino Kaku Gothic ProN", "ÉÅÉCÉäÉI", Meiryo, "ÇlÇr ÇoÉSÉVÉbÉN", "MS PGothic", sans-serif;
+	font-weight: normal;
+}
+button{
+	display: inline-block;
+	padding: 7px 20px;
+	border-radius: 25px;
+	text-decoration: none;
+	color: black;
+	background-image: -webkit-linear-gradient(45deg, #f1f8ff 0%, #f1f8ff 100%);
+	background-image: linear-gradient(45deg, #f1f8ff 0%, #f1f8ff 100%);
+	transition: .4s;
+	font-size: 20px;
+}
+#logo{
+	position: relative;
+	top: -60px;
+}
+#serviceName{
+	position: relative;
+	top: 10px;
+	left: 20px;
+	font-size: 25px;
+}
+#global-header{
+	height: 50px;
+  box-shadow: 5px 5px 5px rgba(102, 68, 0, 0.5);
+}
+
+
+#previewButton{
+	position: absolute;
+	top: 0px;
+	/*left: 900px;*/
+	width:200px;
+	height: 50px;
+	 font-size:20px;
+	 background-image:-webkit-linear-gradient(45deg, #ffffff 0%, #ffffff 100%);
+
+	 text-decoration:none;
+	 display:block;
+	 border-radius: 0px;
+	 text-align:center;
+	 padding:8px 0 10px;
+	 color:#333;
+	 border:0.1px solid #e8e8e8;
+	 cursor:pointer;
+}
+#postformb{
+	position: absolute;
+	top: 0px;
+	/*left: 900px;*/
+	width:100px;
+	height: 50px;
+	 font-size:20px;
+	 text-decoration:none;
+	 display:block;
+	 border-radius: 0px;
+	 text-align:center;
+	 padding:8px 0 10px;
+	 color:#333;
+	 border:0.1px solid #e8e8e8;
+	 cursor:pointer;
+}
+#saveButton{
+	background-image:-webkit-linear-gradient(45deg, #ffffff 0%, #ffffff 100%);
+
+	position: absolute;
+	top: 0px;
+	/*left: 900px;*/
+	width:100px;
+	height: 50px;
+	 font-size:20px;
+	 text-decoration:none;
+	 display:block;
+	 border-radius: 0px;
+	 text-align:center;
+	 padding:8px 0 10px;
+	 color:#333;
+	 border:0.1px solid #e8e8e8;
+	 cursor:pointer;
+}

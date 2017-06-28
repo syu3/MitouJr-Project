@@ -1,11 +1,26 @@
 <html>
 <head>
+  <meta charset="shift_jis">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="shortcut icon" href="favicon.ico">
 </head>
 <script>
 
 </script>
 <body>
+  <header id="global-header">
+    <p id="serviceName">DrawCode</p>
+    <center><h1 id="logo"><font color="#333333">サイトを作成</font></h1></center>
+
+    <nav id="nav">
+      <ul>
+        <!-- <li><a href="">コードを書く</a></li>
+        <li><a href="">他のプロジェクトを見る</a></li> -->
+      </ul>
+    </nav>
+
+  </header>
+
   <!-- <form action = 'preview.php' method = 'post'>
     <input type = 'text' name ='comment/' value=str><br/>
     <input type = 'submit' value ='???M/'>
@@ -18,12 +33,13 @@
   <!-- <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"> -->
          <!-- <path d="M 100 50 L 50 100 z" stroke="black" stroke-width="1"/> -->
   <!-- </svg> -->
-<button type="button" id="firstb" onClick="first()" style="position:absolute; top:300px; width:150px; height:50px;">HTML</button>
-<button type="button" id="kaigyo" onClick="kaigyo" style="position:absolute; top:2%; width:20%; height:50px;">改行</button>
+<button type="button" id="firstb" onClick="first()" style="position:absolute; top:300px; width:150px; height:50px; ">HTML</button>
+
+<button type="button" id="kaigyo" onClick="kaigyo" style="position:absolute; top:62%; width:20%; height:50px;">改行</button>
 <!-- <a href="fff.php" target="_blank">???J</a> -->
 <form method='post' target='_blank' action='fff.php'>
-<input type="hidden" name="code" id="code" value"" >
-  <input type='submit' id="postform" value='Send' onclick="codeFTP();" style="position:relative; top:200px; left200px;">
+  <input type="hidden" name="code" id="code" value"" >
+  <button type='submit' id="postformb" value='Send' onclick="codeFTP();">公開</button>
 </form>
 <!-- <input type="button" value="?w??" style="font-size:60px;" size=60> -->
 </body>
@@ -33,10 +49,10 @@ function postValueCheck(){
   // alert(str);
   if(str != null){
     // alert("はい");
-    document.getElementById("postform").style.display="block";
+    document.getElementById("postformb").style.display="block";
   }else{
     // alert("おい");
-    document.getElementById("postform").style.display="none";
+    document.getElementById("postformb").style.display="none";
   }
 }
 
@@ -89,7 +105,7 @@ var oneXpostion = 0;
 var oneYpositon = 0;
 var Xpositon = 0;
 var moreNum = 0;
-var oneList = ["&lt;img", "&lt;h2&gt;","&lt;\u002fh2&gt;", "&lt;h1&gt;", "&lt;p&gt;","&lt;\u002fp&gt;", "&lt;font","&lt;\u002fcenter&gt;","&gt;","&lt;br&gt;", "&lt;center&gt;", "&lt;hr&gt; ", "&lt;a"];
+var keyWordList = ["&lt;img", "&lt;h2&gt;","&lt;\u002fh2&gt;", "&lt;h1&gt;", "&lt;p&gt;","&lt;\u002fp&gt;", "&lt;font","&lt;\u002fcenter&gt;","&gt;","&lt;br&gt;", "&lt;center&gt;", "&lt;hr&gt; ", "&lt;a"];
 var twoList=[];
 var threeList=[];
 
@@ -114,17 +130,25 @@ function kaigyo(){
   //   document.getElementById("numBack"+ketteinum+"").style.display="none";
   //   document.getElementById("kettei"+ketteinum+"").onclick = new Function( "" );
 }
+
+
   function first(datan){
 
     moreNum = 0;
-
-    document.write("<button type='button' id='previewButton' onClick='preview()' style='position:absolute; top:93.3%;  left:0%; width:100%; height:50px;'>プレビュー</button>");
+    document.write("<link rel='stylesheet' type='text/css' href='style.css'>");
 
     kurikaesi ++;
     if(ketteinum == 0){
-      document.write("<form method='post' target='_blank' action='fff.php'><input type='hidden' name='code' id='code' value=''><input type='submit' value='Send' onclick='codeFTP();'  style='position:relative; top:200px; left200px;''></form>");
+      // <li><a href=''>コードを書く</a></li><li><a href=''>他のプロジェクトを見る</a></li>
+      document.write("<header id='global-header'><center><h1 id='logo'><font color='#333333'>サイトを作成</font></h1></center><nav id='nav'><ul></ul></nav></header>");
+      document.write("<button type='button' id='previewButton' onClick='preview()' style='left:"+(window.innerWidth-299)+";'>プレビュー</button>");
+      document.write("<button type='button' id='saveButton' onClick='save()' style='left:"+(window.innerWidth-398)+";'>保存</button>");
 
-      document.write("<button type='button' id='kaigyo' onClick='kaigyo()' style='position:absolute; top:2%; width:20%; height:50px;'>改行</button>");
+      // alert(window.innerWidth-200);
+
+      document.write("<form method='post' target='_blank' action='fff.php'><input type='hidden' name='code' id='code' value=''><button type='submit' id='postformb' value='Send' onclick='codeFTP();'  style='left:"+(window.innerWidth-100)+";'>公開</button></form>");
+
+      document.write("<button type='button' id='kaigyo' onClick='kaigyo()' style='position:absolute; top:200%; width:20%; height:50px;'>改行</button>");
       document.write("<button type='button' id='first' onClick='first()' style='position:absolute; top:300px; width:150px; height:50px;'>HTML</button>");
     }
 // var x = document.getElementsByClassName("firstb");
@@ -1182,7 +1206,7 @@ setTimeout(countup1, 10);
         }
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
         if(result == "&lt;p&gt;"){
-          document.getElementById("one").innerHTML = "3??20???????";
+          document.getElementById("one").innerHTML = "文字入力";
           document.getElementById("two").innerHTML = "height";
           document.getElementById("three").innerHTML = "";
           document.getElementById("four").innerHTML = "その他";
@@ -1196,7 +1220,7 @@ setTimeout(countup1, 10);
         }
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
         if(result == ""){
-          document.getElementById("one").innerHTML = "3??20???????";
+          document.getElementById("one").innerHTML = "文字入力";
           document.getElementById("two").innerHTML = "height";
           document.getElementById("three").innerHTML = "";
           document.getElementById("four").innerHTML = "その他";
@@ -1458,14 +1482,14 @@ setTimeout(countup1, 10);
         }
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
         if(result == "&gt;"){
-          document.getElementById("one").innerHTML = "?g?b?v";
-          document.getElementById("two").innerHTML = "?v???t?B?[??";
+          document.getElementById("one").innerHTML = "ホーム";
+          document.getElementById("two").innerHTML = "自己紹介";
           document.getElementById("three").innerHTML = "&lt;h1&gt;";
           document.getElementById("four").innerHTML = "その他";
         }
 
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if(result == "?g?b?v"){
+        if(result == "ホーム"){
           document.getElementById("one").innerHTML = "&lt;\u002fa&gt;";
           document.getElementById("two").innerHTML = "&lt;h1&gt;";
           document.getElementById("three").innerHTML = "&lt;h1&gt;";
@@ -1479,7 +1503,7 @@ setTimeout(countup1, 10);
           document.getElementById("four").innerHTML = "その他";
         }
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if(result == "?v???t?B?[??"){
+        if(result == "自己紹介"){
           document.getElementById("one").innerHTML = "&lt;\u002fa&gt;";
           document.getElementById("two").innerHTML = "&lt;h1&gt;";
           document.getElementById("three").innerHTML = "&lt;h1&gt;";
@@ -1529,7 +1553,7 @@ setTimeout(countup1, 10);
         }
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
         if(result == "&lt;p&gt;"){
-          document.getElementById("one").innerHTML = "3??20???????";
+          document.getElementById("one").innerHTML = "文字入力";
           document.getElementById("two").innerHTML = "&lt;h1&gt;";
           document.getElementById("three").innerHTML = "&lt;h1&gt;";
           document.getElementById("four").innerHTML = "その他";
@@ -1748,9 +1772,9 @@ function more(){
     var moreNum1 = moreNum*3;
 
       // var array = ['a', 'b', 'c'];
-      var value1 = oneList[moreNum1-3];
-      var value2 = oneList[moreNum1-2];
-      var value3 = oneList[moreNum1-1];
+      var value1 = keyWordList[moreNum1-3];
+      var value2 = keyWordList[moreNum1-2];
+      var value3 = keyWordList[moreNum1-1];
 
 
       // console.log(value1); // ['a', 'b', 'c']
@@ -1760,9 +1784,9 @@ function more(){
         moreNum = 1;
         var moreNum1 = moreNum*3;
 
-        var value1 = oneList[moreNum1-3];
-        var value2 = oneList[moreNum1-2];
-        var value3 = oneList[moreNum1-1];
+        var value1 = keyWordList[moreNum1-3];
+        var value2 = keyWordList[moreNum1-2];
+        var value3 = keyWordList[moreNum1-1];
         document.getElementById("one").innerHTML = value1;
         document.getElementById("two").innerHTML = value2;
         document.getElementById("three").innerHTML = value3;
