@@ -6,20 +6,19 @@
   <input type="button" onClick="button111()" value="送信！！！">
 </body>
 <script>
-function button111(){
-jQuery.ajax(
-                         "fff.php",{
-                              type: "POST",
-                              dataType: 'text',
-                              data: {//nameとvalueをセットでオブジェクトのなかに定義する
-                                   "name" : "mogeri",
-                              },
-                              success: function(post){
-                                   console.log(post);
-                              }
-                         }
-                    );
-                  }
+function button111() {
+  jQuery.ajax("fff.php", {
+    type: "POST",
+    dataType: "text",
+    data: {
+      //nameとvalueをセットでオブジェクトのなかに定義する
+      name: "mogeri"
+    },
+    success: function(post) {
+      console.log(post);
+    }
+  });
+}
 </script>
 <body>
 </body>
