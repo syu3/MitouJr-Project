@@ -1,1 +1,26 @@
-<html><head><body><hr width='300'></body></html>
+<html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+  <input type="button" onClick="button111()" value="送信！！！">
+</body>
+<script>
+function button111(){
+jQuery.ajax(
+                         "fff.php",{
+                              type: "POST",
+                              dataType: 'text',
+                              data: {//nameとvalueをセットでオブジェクトのなかに定義する
+                                   "name" : "mogeri",
+                              },
+                              success: function(post){
+                                   console.log(post);
+                              }
+                         }
+                    );
+                  }
+</script>
+<body>
+</body>
+</html>
