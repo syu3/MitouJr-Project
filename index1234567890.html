@@ -3,26 +3,17 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-  <input type="button" onClick="button111()" value="送信！！！" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing Order">
+  <input type="button" onClick="button111()" value="送信！！！">
 </body>
 <script>
 function button111() {
-  // jQuery.ajax("http://u613191873:Syu2004320@typingcode.16mb.com/index.php", {
-  //   type: "POST",
-  //   dataType: "text",
-  //   data: {
-  //     //nameとvalueをセットでオブジェクトのなかに定義する
-  //     name: "mogeri"
-  //   },
-  //   success: function(post) {
-  //     console.log(post);
-  //   }
-  // });
-
-  jQuery.ajax("http://typingcode.16mb.com/index.php?format=jsonp", {
-    type: "post",
-    dataType: "jsonp", //後はデータタイプの指定。
-    data: "keyword=愛知県&keyword_or=wordpress&count=50",
+  jQuery.ajax("http://typingcode.16mb.com/aaa.jsonp", {
+    type: "POST",
+    dataType: "jsonp",
+    data: {
+      //nameとvalueをセットでオブジェクトのなかに定義する
+      name: "mogeri"
+    },
     success: function(post) {
       console.log(post);
     }
