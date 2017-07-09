@@ -122,8 +122,9 @@ var keyWordList = [
   "&lt;hr&gt; ",
   "&lt;a"
 ];
-var twoList = [];
-var threeList = [];
+var list = {
+  "&lt;center&gt;": ["&lt;\u002fcenter&gt;"]
+};
 
 function kaigyo() {
   document.getElementById("first").onclick = new Function("first()");
@@ -739,6 +740,7 @@ function nextcode() {
       // document.write(data);
       var result = kettei.innerHTML.replace(/&lt;/g, "&lt;");
       var elem = document.getElementById("kettei");
+      console.log(list[result]);
       if (result == "&lt;center&gt;") {
         var elem1 = (document.getElementById("one").innerHTML = "&lt;h1&gt;");
       }
@@ -811,6 +813,7 @@ function nextcode() {
         // document.write(data);
 
         var result = data.replace(/&lt;/g, "&lt;");
+
         // var elem = document.getElementById("kettei"+ketteinum+"");
         // elem.innerHTML = result;
 
