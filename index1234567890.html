@@ -3,22 +3,41 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
+  <table id="outside">
+     <tr><td id="t1">one</td></tr>
+     <tr><td id="t2">two</td></tr>
+  </table>
   <input type="button" onClick="button111()" value="送信！！！">
 </body>
 <script>
-function button111() {
-  jQuery.ajax("http://typingcode.16mb.com/index.php", {
-    type: "POST",
-    dataType: "text",
-    data: {
-      //nameとvalueをセットでオブジェクトのなかに定義する
-      name: "mogeri"
-    },
-    success: function(post) {
-      console.log(post);
-    }
-  });
+// function button111() {
+// t2 のコンテンツを変更する関数
+function modifyText(new_text) {
+  var t2 = document.getElementById("t2");
+  t2.firstChild.nodeValue = new_text;
 }
+
+// イベントリスナーを table に追加する関数
+var el = document.getElementById("one");
+el.addEventListener(
+  "click",
+  function() {
+    modifyText("four");
+  },
+  false
+);
+// jQuery.ajax("http://typingcode.16mb.com/index.php", {
+//   type: "POST",
+//   dataType: "text",
+//   data: {
+//     //nameとvalueをセットでオブジェクトのなかに定義する
+//     name: "mogeri"
+//   },
+//   success: function(post) {
+//     console.log(post);
+//   }
+// });
+// }
 </script>
 <body>
 </body>

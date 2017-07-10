@@ -48,12 +48,9 @@
 <script>
 postValueCheck();
 function postValueCheck() {
-  // alert(str);
   if (str != null) {
-    // alert("はい");
     document.getElementById("postformb").style.display = "block";
   } else {
-    // alert("おい");
     document.getElementById("postformb").style.display = "none";
   }
 }
@@ -65,10 +62,8 @@ function codeFTP() {
   str = str.replace(/&gt;/g, ">");
   str = str.replace(/,/g, "");
   document.write(str);
-  // alert("はいはいはい");
   document.getElementById("code").value = str;
   // }else{
-  //  alert("コードを書いてください");
   //  document.getElementById("postform").action="";
   //
   // }
@@ -123,7 +118,8 @@ var keyWordList = [
   "&lt;a"
 ];
 var list = {
-  "&lt;center&gt;": ["&lt;\u002fcenter&gt;"]
+  "&lt;center&gt;": ["&lt;\u002fcenter&gt;"],
+  "&lt;h": ["アイウエオ"]
 };
 
 function kaigyo() {
@@ -168,8 +164,6 @@ function first(datan) {
         (window.innerWidth - 398) +
         ";'>保存</button>"
     );
-
-    // alert(window.innerWidth-200);
 
     document.write(
       "<form method='post' target='_blank' action='fff.php'><input type='hidden' name='code' id='code' value=''><button type='submit' id='postformb' value='Send' onclick='codeFTP();'  style='left:" +
@@ -313,103 +307,72 @@ function first(datan) {
     }
 
     num = 0;
-    if (ketteinum == 1) {
-      if (datan == 3) {
-      } else {
-        document.write(
-          "<img src='sentwo.png' id='sentwo' style='position:absolute; top:75px;  left:145px; width:70px; height:100px;'>"
-        );
 
-        document.write(
-          "<button type='button' id='kettei' onClick='first()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'>&lt;h</button>"
-        );
+    if (datan == 3) {
+    } else {
+      document.write(
+        "<img src='sentwo.png' id='sentwo" +
+          ketteinum +
+          "' style='position:absolute; top:75px;  left:145px; width:70px; height:100px;'>"
+      );
+
+      document.write(
+        "<button type='button' id='kettei" +
+          ketteinum +
+          "' onClick='first()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'>&lt;h</button>"
+      );
+    }
+
+    // $("#html").append(
+    //   "<button type='button' id='kettei" +
+    //     ketteinum +
+    //     "' onClick='first()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'>&lt;h</button>"
+    // );
+
+    if (kakkonum == 0) {
+      var left = ketteinum * 200;
+      var element = document.getElementById("kettei" + ketteinum + "");
+      element.style.left = left;
+      document.getElementById("kettei" + ketteinum + "").style.display =
+        "block";
+    } else {
+      //   var left = 0;
+      //   var kurikaesi1 = kurikaesi - 1;
+      //
+      //   if(kurikaesi1 == 0){
+      //     left = kurikaesi1 * 210;
+      //
+      //   }else{
+      //     left = kurikaesi1 * 205;
+      //
+      // }
+      // }
+    }
+
+    if (ketteinum == 2) {
+      var element = document.getElementById("sentwo" + ketteinum + "");
+      var rect = element.getBoundingClientRect();
+      var positionX = rect.left + window.pageXOffset; // ?v?f??X???W
+      var positionY = rect.top + window.pageYOffset; // ?v?f??Y???W
+      n = 200 * num;
+
+      if (kakkonum == 0) {
+        var senleft1 = positionX + 195;
+        var element1 = document.getElementById("sentwo" + ketteinum + "");
+        element1.style.left = senleft1;
+        document.getElementById("sentwo" + ketteinum + "").style.display =
+          "block";
+      } else {
+        var senleft1 = positionX + 200;
+        var element1 = document.getElementById("sentwo" + ketteinum + "");
+        element1.style.left = senleft1;
+        document.getElementById("sentwo" + ketteinum + "").style.display =
+          "block";
       }
     } else {
-      if (datan == 3) {
+      var ddd = ketteinum - 1;
+      if (ketteinum == 1) {
       } else {
-        document.write(
-          "<button type='button' id='kettei" +
-            ketteinum +
-            "' onClick='first()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'>&lt;h</button>"
-        );
-
-        // $("#html").append(
-        //   "<button type='button' id='kettei" +
-        //     ketteinum +
-        //     "' onClick='first()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'>&lt;h</button>"
-        // );
-
-        document.write(
-          "<img src='sentwo.png' id='sentwo" +
-            ketteinum +
-            "' style='position:absolute; top:75px;  left:140px; width:80px; height:100px;'>"
-        );
-      }
-      if (kakkonum == 0) {
-        var left = ketteinum * 200;
-        var element = document.getElementById("kettei" + ketteinum + "");
-        element.style.left = left;
-        document.getElementById("kettei").style.display = "block";
-      } else {
-        //   var left = 0;
-        //   var kurikaesi1 = kurikaesi - 1;
-        //
-        //   if(kurikaesi1 == 0){
-        //     left = kurikaesi1 * 210;
-        //
-        //   }else{
-        //     left = kurikaesi1 * 205;
-        //
-        // }
-
-        if (kurikaesi == 2) {
-          var top = loopKetteiNum * 150;
-          var element = document.getElementById("kettei" + ketteinum + "");
-          element.style.left = "210";
-          element.style.top = top;
-          document.getElementById("kettei").style.display = "block";
-        } else {
-          // positionX = positionX + 200;
-          var ddd = ketteinum - 1;
-
-          var element = document.getElementById("sentwo" + ddd + "");
-          var rect = element.getBoundingClientRect();
-
-          // ???W???v?Z????
-          var positionX = rect.left + window.pageXOffset; // ?v?f??X???W
-          var positionY = rect.top + window.pageYOffset; // ?v?f??Y???W
-          n = 200 * num;
-          positionX = positionX + 270;
-          var top = loopKetteiNum * 150;
-          var element = document.getElementById("kettei" + ketteinum + "");
-          element.style.left = positionX;
-          element.style.top = top;
-          document.getElementById("kettei").style.display = "block";
-        }
-        // }
-      }
-
-      if (ketteinum == 2) {
-        var element = document.getElementById("sentwo");
-        var rect = element.getBoundingClientRect();
-
-        // ???W???v?Z????
-        var positionX = rect.left + window.pageXOffset; // ?v?f??X???W
-        var positionY = rect.top + window.pageYOffset; // ?v?f??Y???W
-        n = 200 * num;
-        if (kakkonum == 0) {
-          var senleft1 = ketteinum * 168;
-          var element1 = document.getElementById("sentwo" + ketteinum + "");
-          element1.style.left = senleft1;
-          document.getElementById("sentwo").style.display = "block";
-        } else {
-          var senleft1 = ketteinum1 * 168;
-          var element1 = document.getElementById("sentwo" + ketteinum + "");
-          element1.style.left = senleft1;
-          document.getElementById("sentwo").style.display = "block";
-        }
-      } else {
-        var ddd = ketteinum - 1;
         var element = document.getElementById("sentwo" + ddd + "");
         var rect = element.getBoundingClientRect();
 
@@ -422,13 +385,14 @@ function first(datan) {
           var senleft1 = ketteinum * 170;
           var element1 = document.getElementById("sentwo" + ketteinum + "");
           element1.style.left = positionX;
-          document.getElementById("sentwo").style.display = "block";
+          document.getElementById("sentwo" + ketteinum + "").style.display =
+            "block";
         } else {
           var ddd = ketteinum - 1;
           if (sentwoleft == 1) {
             var ddd = ketteinum - 1;
 
-            var element = document.getElementById("sentwo" + ddd + "");
+            var element = document.getElementById("sentwo" + ketteinum + "");
             var rect = element.getBoundingClientRect();
 
             // ???W???v?Z????
@@ -441,13 +405,14 @@ function first(datan) {
             var element1 = document.getElementById("sentwo" + ketteinum + "");
             element1.style.left = 145;
             element1.style.top = loopKetteiNum * 132.5;
-            document.getElementById("sentwo").style.display = "block";
+            document.getElementById("sentwo" + ketteinum + "").style.display =
+              "block";
             sentwoleft = 0;
           } else {
             // if(ketteinum1 == 1){
             var ddd = ketteinum - 1;
 
-            var element = document.getElementById("kettei" + ddd + "");
+            var element = document.getElementById("kettei" + ketteinum + "");
             var rect = element.getBoundingClientRect();
 
             // ???W???v?Z????
@@ -465,92 +430,54 @@ function first(datan) {
             var element1 = document.getElementById("sentwo" + ketteinum + "");
             element1.style.left = positionX;
             element1.style.top = loopKetteiNum * 132.5;
-            document.getElementById("sentwo").style.display = "block";
+            document.getElementById("sentwo" + ketteinum + "").style.display =
+              "block";
           }
 
           // }
         }
       }
     }
+
     // var count = 0;
     //   var countup = function(){
-
     if (datan == 0) {
-      if (ketteinum == 1) {
-        var element = document.getElementById("one");
-        result1234 = one.innerHTML.replace(/&lt;/g, "&lt;");
-        var elem = document.getElementById("kettei");
-        elem.innerHTML = result1234;
-        if (result1234.indexOf("\u002f") != -1) {
-          kurikaesi = 0;
-
-          //         sentwoleft ++;
-          //
-          // // ketteinum1 = 0;
-          //   loopKetteiNum++;
-          // kakkonum = kakkonum + 1;
-          // document.getElementById("one").style.display="none";
-          // document.getElementById("two").style.display="none";
-          // document.getElementById("three").style.display="none";
-          //   document.getElementById("four").style.display="none";
-          //   document.getElementById("senone").style.display="none";
-          //               document.getElementById("numBack"+ketteinum+"").style.display="none";
-          //   document.getElementById("kettei").onclick = new Function( "" );
-
-          // document.getElementById("sentwo").style.display="none";
-          // document.getElementById("kettei").style.display="none";
-        }
-      } else {
-        var element = document.getElementById("one");
-        result1234 = one.innerHTML.replace(/&lt;/g, "&lt;");
-        var elem = document.getElementById("kettei" + ketteinum + "");
-        elem.innerHTML = result1234;
-        if (result1234.indexOf("\u002f") != -1) {
-          // kurikaesi = 0;
-          //               sentwoleft ++;
-          // loopKetteiNum++;
-          //       kakkonum = kakkonum + 1;
-          // document.getElementById("one").style.display="none";
-          // document.getElementById("two").style.display="none";
-          // document.getElementById("three").style.display="none";
-          //   document.getElementById("four").style.display="none";
-          //   document.getElementById("senone").style.display="none";
-          //   document.getElementById("numBack"+ketteinum+"").style.display="none";
-          //   document.getElementById("kettei"+ketteinum+"").onclick = new Function( "" );
-        }
+      var element = document.getElementById("one");
+      result1234 = element.innerHTML.replace(/&lt;/g, "&lt;");
+      var elem = document.getElementById("kettei" + ketteinum + "");
+      elem.innerHTML = result1234;
+      if (result1234.indexOf("\u002f") != -1) {
+        // kurikaesi = 0;
+        //               sentwoleft ++;
+        // loopKetteiNum++;
+        //       kakkonum = kakkonum + 1;
+        // document.getElementById("one").style.display="none";
+        // document.getElementById("two").style.display="none";
+        // document.getElementById("three").style.display="none";
+        //   document.getElementById("four").style.display="none";
+        //   document.getElementById("senone").style.display="none";
+        //   document.getElementById("numBack"+ketteinum+"").style.display="none";
+        //   document.getElementById("kettei"+ketteinum+"").onclick = new Function( "" );
       }
 
-      data = document.getElementById("one");
+      data = document.getElementById("one").innerHTML;
     } else if (datan == 1) {
-      if (ketteinum == 1) {
-        var element = document.getElementById("two");
-        result1234 = document.getElementById("two").innerHTML;
-        var elem = document.getElementById("kettei");
-        elem.innerHTML = result1234;
-      } else {
-        var element = document.getElementById("two");
-        result1234 = document.getElementById("two").innerHTML;
-        console.log(result1234);
+      var element = document.getElementById("two");
+      result1234 = document.getElementById("two").innerHTML;
+      console.log(result1234);
 
-        // var dadada = ketteinum - 1;
-        var elem = document.getElementById("kettei" + ketteinum + "");
-        console.log("kettei" + ketteinum + "");
-        elem.innerHTML = result1234;
-      }
+      // var dadada = ketteinum - 1;
+      var elem = document.getElementById("kettei" + ketteinum + "");
+      console.log("kettei" + ketteinum + "," + result1234 + "");
+      elem.innerHTML = result1234;
 
       data = document.getElementById("two").innerHTML;
     } else if (datan == 2) {
-      if (ketteinum == 1) {
-        var element = document.getElementById("three");
-        result1234 = three.innerHTML.replace(/&lt;/g, "&lt;");
-        var elem = document.getElementById("kettei");
-        elem.innerHTML = result1234;
-      } else {
-        var element = document.getElementById("three");
-        result1234 = three.innerHTML.replace(/&lt;/g, "&lt;");
-        var elem = document.getElementById("kettei" + ketteinum + "");
-        elem.innerHTML = result1234;
-      }
+      var element = document.getElementById("three");
+      result1234 = document.getElementById("three").innerHTML;
+      var elem = document.getElementById("kettei" + ketteinum + "");
+      elem.innerHTML = result1234;
+
       data = document.getElementById("three");
     } else if (datan == 3) {
       document.getElementById("four");
@@ -559,7 +486,8 @@ function first(datan) {
     if (minusoneKN1 == 0) {
       if (datan == 3) {
       } else {
-        var data1 = document.getElementById("kettei").innerHTML;
+        var data1 = document.getElementById("kettei" + ketteinum + "")
+          .innerHTML;
         // //?f?[?^?o??
         //
 
@@ -676,23 +604,18 @@ function first(datan) {
         array.push(data1);
         console.log(array);
 
-        var count1 = 0;
-        var countup1 = function() {
-          if (ketteinum == 1) {
-            var elem = document.getElementById("kettei");
-            elem.innerHTML = result1234;
-          } else {
-            var elem = document.getElementById("kettei" + ketteinum + "");
-            elem.innerHTML = result1234;
-          }
-        };
-        setTimeout(countup1, 10);
+        // var count1 = 0;
+        // var countup1 = function() {
+        //   var elem = document.getElementById("kettei" + ketteinum + "");
+        //   elem.innerHTML = result1234;
+        // };
+        // setTimeout(countup1, 10);
       }
     }
-    var element = document.getElementById("one");
-    var result = one.innerHTML.replace(/&lt;/g, "&lt;");
-    var elem = document.getElementById("kettei" + ketteinum + "");
-    elem.innerHTML = result;
+    // var element = document.getElementById("one");
+    // var result = element.innerHTML.replace(/&lt;/g, "&lt;");
+    // var elem = document.getElementById("kettei" + ketteinum + "");
+    // elem.innerHTML = result;
     if (result.indexOf("\u002f") != -1) {
       // str = array.join(',');
       // str = str.replace( /&lt;/g , "<" ) ;
@@ -734,22 +657,90 @@ function nextcode() {
     document.getElementById("numBack").style.display = "block";
 
     // if(datan == 0){
-    if (ketteinum == 2) {
-      data = document.getElementById("kettei").innerHTML;
+
+    if (kurikaesi == 1) {
+      document.getElementById("one").innerHTML = "&lt;center&gt;";
+      document.getElementById("two").innerHTML = "&lt;hr";
+      document.getElementById("three").innerHTML = "&lt;a";
+      document.getElementById("four").innerHTML = "その他"; //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+    } else {
+      // var element="two";
+      var minusoneKN = ketteinum - 1;
+      //?f?[?^???????
+      data = document.getElementById("kettei" + minusoneKN + "").innerHTML;
       //?f?[?^?o??
+
       // document.write(data);
-      var result = kettei.innerHTML.replace(/&lt;/g, "&lt;");
-      var elem = document.getElementById("kettei");
+
+      var result = data.replace(/&lt;/g, "&lt;");
       console.log(list[result]);
+      // var elem = document.getElementById("kettei"+ketteinum+"");
+      // elem.innerHTML = result;
+
       if (result == "&lt;center&gt;") {
+        document.getElementById("one").innerHTML = "&lt;h1&gt;";
         var elem1 = (document.getElementById("one").innerHTML = "&lt;h1&gt;");
       }
-
+      if (
+        result == "&lt;h1&gt;" ||
+        result == "&lt;h2&gt;" ||
+        result == "&lt;br&gt;"
+      ) {
+        document.getElementById("one").innerHTML = "文字入力";
+      }
+      if (result == "文字入力") {
+        var elem1 = document.getElementById("one");
+        elem1.innerHTML = "&lt;\u002fh1&gt;";
+      }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "&lt;a") {
         document.getElementById("one").innerHTML = "href";
         document.getElementById("two").innerHTML = "id";
         document.getElementById("three").innerHTML = "&gt;";
+        document.getElementById("four").innerHTML = "その他";
+      }
+
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (result == "href") {
+        document.getElementById("one").innerHTML = "index.html";
+        document.getElementById("two").innerHTML = "test.html";
+        document.getElementById("three").innerHTML = "";
+        document.getElementById("four").innerHTML = "その他";
+      }
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (result == "index.html") {
+        document.getElementById("one").innerHTML = "&gt;";
+        document.getElementById("two").innerHTML = "&lt;\u002fh2&gt;";
+        document.getElementById("three").innerHTML = "&lt;br&gt;";
+        document.getElementById("four").innerHTML = "&lt;\u002fp&gt;";
+      }
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (result == "&gt;") {
+        document.getElementById("one").innerHTML = "ホーム";
+        document.getElementById("two").innerHTML = "自己紹介";
+        document.getElementById("three").innerHTML = "&lt;h1&gt;";
+        document.getElementById("four").innerHTML = "その他";
+      }
+
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (result == "ホーム") {
+        document.getElementById("one").innerHTML = "&lt;\u002fa&gt;";
+        document.getElementById("two").innerHTML = "&lt;h1&gt;";
+        document.getElementById("three").innerHTML = "&lt;h1&gt;";
+        document.getElementById("four").innerHTML = "その他";
+      }
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (result == "test.html") {
+        document.getElementById("one").innerHTML = "&gt;";
+        document.getElementById("two").innerHTML = "id";
+        document.getElementById("three").innerHTML = "";
+        document.getElementById("four").innerHTML = "その他";
+      }
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (result == "自己紹介") {
+        document.getElementById("one").innerHTML = "&lt;\u002fa&gt;";
+        document.getElementById("two").innerHTML = "&lt;h1&gt;";
+        document.getElementById("three").innerHTML = "&lt;h1&gt;";
         document.getElementById("four").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
@@ -760,212 +751,81 @@ function nextcode() {
         document.getElementById("four").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "&lt;img") {
-        document.getElementById("one").innerHTML = "src";
-        document.getElementById("two").innerHTML = "height";
+      if (result == "width") {
+        document.getElementById("one").innerHTML = "300";
+        document.getElementById("two").innerHTML = "400";
+        document.getElementById("three").innerHTML = "500";
+        document.getElementById("four").innerHTML = "その他";
+      }
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (
+        result == "500" ||
+        result == "400" ||
+        result == "300" ||
+        result == "3" ||
+        result == "5" ||
+        result == "10"
+      ) {
+        document.getElementById("one").innerHTML = "&gt;";
+        document.getElementById("two").innerHTML = "";
         document.getElementById("three").innerHTML = "";
         document.getElementById("four").innerHTML = "その他";
       }
-
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "&lt;font") {
-        document.getElementById("one").innerHTML = "size";
-        document.getElementById("two").innerHTML = "height";
-        document.getElementById("three").innerHTML = "";
+      if (result == "&lt;img") {
+        document.getElementById("one").innerHTML = "src";
+        document.getElementById("two").innerHTML = "id";
+        document.getElementById("three").innerHTML = "alt";
+        document.getElementById("four").innerHTML = "その他";
+      }
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (result == "src") {
+        document.getElementById("one").innerHTML = "url.jpg";
+        document.getElementById("two").innerHTML = "&lt;h1&gt;";
+        document.getElementById("three").innerHTML = "&lt;h1&gt;";
+        document.getElementById("four").innerHTML = "その他";
+      } else if (result == "url.jpg") {
+        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+        //.jpg??.pngその他その他?
+        document.getElementById("one").innerHTML = "&gt;";
+        document.getElementById("two").innerHTML = "&lt;h1&gt;";
+        document.getElementById("three").innerHTML = "&lt;h1&gt;";
         document.getElementById("four").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "&lt;p&gt;") {
         document.getElementById("one").innerHTML = "文字入力";
-        document.getElementById("two").innerHTML = "height";
-        document.getElementById("three").innerHTML = "";
+        document.getElementById("two").innerHTML = "&lt;h1&gt;";
+        document.getElementById("three").innerHTML = "&lt;h1&gt;";
         document.getElementById("four").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "&lt;h2&gt;") {
-        document.getElementById("one").innerHTML = "????????";
-        document.getElementById("two").innerHTML = "height";
-        document.getElementById("three").innerHTML = "";
+      if (result == "&lt;font") {
+        document.getElementById("one").innerHTML = "size";
+        document.getElementById("two").innerHTML = "&lt;h1&gt;";
+        document.getElementById("three").innerHTML = "&lt;h1&gt;";
+        document.getElementById("four").innerHTML = "その他";
+      }
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (result == "size") {
+        document.getElementById("one").innerHTML = "3";
+        document.getElementById("two").innerHTML = "5";
+        document.getElementById("three").innerHTML = "10";
         document.getElementById("four").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "") {
-        document.getElementById("one").innerHTML = "文字入力";
-        document.getElementById("two").innerHTML = "height";
-        document.getElementById("three").innerHTML = "";
+        document.getElementById("one").innerHTML = "&lt;\u002fh1&gt;";
+        document.getElementById("two").innerHTML = "&lt;h1&gt;";
+        document.getElementById("three").innerHTML = "&lt;h1&gt;";
         document.getElementById("four").innerHTML = "その他";
       }
-
-      elem.innerHTML = result;
-    } else {
-      if (kurikaesi == 1) {
-        document.getElementById("one").innerHTML = "&lt;center&gt;";
-        document.getElementById("two").innerHTML = "&lt;hr";
-        document.getElementById("three").innerHTML = "&lt;a";
-        document.getElementById("four").innerHTML = "その他"; //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      } else {
-        // var element="two";
-        var minusoneKN = ketteinum - 1;
-        //?f?[?^???????
-        data = document.getElementById("kettei" + minusoneKN + "").innerHTML;
-        //?f?[?^?o??
-
-        // document.write(data);
-
-        var result = data.replace(/&lt;/g, "&lt;");
-
-        // var elem = document.getElementById("kettei"+ketteinum+"");
-        // elem.innerHTML = result;
-
-        if (result == "&lt;center&gt;") {
-          var elem1 = (document.getElementById("one").innerHTML = "&lt;h1&gt;");
-        }
-        if (
-          result == "&lt;h1&gt;" ||
-          result == "&lt;h2&gt;" ||
-          result == "&lt;br&gt;"
-        ) {
-          document.getElementById("one").innerHTML = "文字入力";
-        }
-        if (result == "文字入力") {
-          var elem1 = document.getElementById("one");
-          elem1.innerHTML = "&lt;\u002fh1&gt;";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "&lt;a") {
-          document.getElementById("one").innerHTML = "href";
-          document.getElementById("two").innerHTML = "id";
-          document.getElementById("three").innerHTML = "&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        }
-
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "href") {
-          document.getElementById("one").innerHTML = "index.html";
-          document.getElementById("two").innerHTML = "test.html";
-          document.getElementById("three").innerHTML = "";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "index.html") {
-          document.getElementById("one").innerHTML = "&gt;";
-          document.getElementById("two").innerHTML = "&lt;\u002fh2&gt;";
-          document.getElementById("three").innerHTML = "&lt;br&gt;";
-          document.getElementById("four").innerHTML = "&lt;\u002fp&gt;";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "&gt;") {
-          document.getElementById("one").innerHTML = "ホーム";
-          document.getElementById("two").innerHTML = "自己紹介";
-          document.getElementById("three").innerHTML = "&lt;h1&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        }
-
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "ホーム") {
-          document.getElementById("one").innerHTML = "&lt;\u002fa&gt;";
-          document.getElementById("two").innerHTML = "&lt;h1&gt;";
-          document.getElementById("three").innerHTML = "&lt;h1&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "test.html") {
-          document.getElementById("one").innerHTML = "&gt;";
-          document.getElementById("two").innerHTML = "id";
-          document.getElementById("three").innerHTML = "";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "自己紹介") {
-          document.getElementById("one").innerHTML = "&lt;\u002fa&gt;";
-          document.getElementById("two").innerHTML = "&lt;h1&gt;";
-          document.getElementById("three").innerHTML = "&lt;h1&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "&lt;hr") {
-          document.getElementById("one").innerHTML = "width";
-          document.getElementById("two").innerHTML = "height";
-          document.getElementById("three").innerHTML = "";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "width") {
-          document.getElementById("one").innerHTML = "300";
-          document.getElementById("two").innerHTML = "400";
-          document.getElementById("three").innerHTML = "500";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (
-          result == "500" ||
-          result == "400" ||
-          result == "300" ||
-          result == "3" ||
-          result == "5" ||
-          result == "10"
-        ) {
-          document.getElementById("one").innerHTML = "&gt;";
-          document.getElementById("two").innerHTML = "";
-          document.getElementById("three").innerHTML = "";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "&lt;img") {
-          document.getElementById("one").innerHTML = "src";
-          document.getElementById("two").innerHTML = "id";
-          document.getElementById("three").innerHTML = "alt";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "src") {
-          document.getElementById("one").innerHTML = "url.jpg";
-          document.getElementById("two").innerHTML = "&lt;h1&gt;";
-          document.getElementById("three").innerHTML = "&lt;h1&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        } else if (result == "url.jpg") {
-          //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-          //.jpg??.pngその他その他?
-          document.getElementById("one").innerHTML = "&gt;";
-          document.getElementById("two").innerHTML = "&lt;h1&gt;";
-          document.getElementById("three").innerHTML = "&lt;h1&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "&lt;p&gt;") {
-          document.getElementById("one").innerHTML = "文字入力";
-          document.getElementById("two").innerHTML = "&lt;h1&gt;";
-          document.getElementById("three").innerHTML = "&lt;h1&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "&lt;font") {
-          document.getElementById("one").innerHTML = "size";
-          document.getElementById("two").innerHTML = "&lt;h1&gt;";
-          document.getElementById("three").innerHTML = "&lt;h1&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "size") {
-          document.getElementById("one").innerHTML = "3";
-          document.getElementById("two").innerHTML = "5";
-          document.getElementById("three").innerHTML = "10";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "") {
-          document.getElementById("one").innerHTML = "&lt;\u002fh1&gt;";
-          document.getElementById("two").innerHTML = "&lt;h1&gt;";
-          document.getElementById("three").innerHTML = "&lt;h1&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        }
-        //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (result == "") {
-          document.getElementById("one").innerHTML = "&lt;\u002fh1&gt;";
-          document.getElementById("two").innerHTML = "&lt;h1&gt;";
-          document.getElementById("three").innerHTML = "&lt;h1&gt;";
-          document.getElementById("four").innerHTML = "その他";
-        }
+      //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      if (result == "") {
+        document.getElementById("one").innerHTML = "&lt;\u002fh1&gt;";
+        document.getElementById("two").innerHTML = "&lt;h1&gt;";
+        document.getElementById("three").innerHTML = "&lt;h1&gt;";
+        document.getElementById("four").innerHTML = "その他";
       }
     }
   }
@@ -1003,7 +863,7 @@ function more() {
   if (ddd == 0) {
   } else if (ddd == 1) {
     result = document
-      .getElementById("kettei")
+      .getElementById("kettei" + ketteinum + "")
       .innerHTML.replace(/&lt;/g, "&lt;");
   } else {
     result = document
