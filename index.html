@@ -11,7 +11,6 @@
   <header id="global-header">
     <p id="serviceName">DrawCode</p>
     <center><h1 id="logo"><font color="#333333">サイトを作成</font></h1></center>
-
     <nav id="nav">
       <ul>
         <!-- <li><a href="">コードを書く</a></li>
@@ -117,10 +116,6 @@ var keyWordList = [
   "&lt;hr&gt; ",
   "&lt;a"
 ];
-var list = {
-  "&lt;center&gt;": ["&lt;\u002fcenter&gt;"],
-  "&lt;h": ["アイウエオ"]
-};
 
 function kaigyo() {
   document.getElementById("first").onclick = new Function("first()");
@@ -647,6 +642,7 @@ function first(datan) {
 }
 
 //その他A????R?[?h???\その他???[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+
 function nextcode() {
   if (num == 1) {
     document.getElementById("one").style.display = "block";
@@ -673,11 +669,21 @@ function nextcode() {
       // document.write(data);
 
       var result = data.replace(/&lt;/g, "&lt;");
+
+      alert(result);
       console.log(list[result]);
 
       // var elem = document.getElementById("kettei"+ketteinum+"");
       // elem.innerHTML = result;
-
+      var list = {
+        "&lt;center&gt;": ["&lt;\u002fcenter&gt;"],
+        "&lt;a": ["href", "id", ">", "その他"],
+        "href": ["index.html","test.html",""],
+        "index.html": [">","</h1>","<br>","</p>"],
+        "": ["","",""],
+        "": ["","",""],
+        "": ["","",""]
+      };
       if (result == "&lt;center&gt;") {
         document.getElementById("one").innerHTML = "&lt;h1&gt;";
         var elem1 = (document.getElementById("one").innerHTML = "&lt;h1&gt;");
@@ -828,6 +834,7 @@ function nextcode() {
         document.getElementById("three").innerHTML = "&lt;h1&gt;";
         document.getElementById("four").innerHTML = "その他";
       }
+      document.getElementById("four").innerHTML = "4つ目です"
     }
   }
   var center = ["<h1", "<hr", "<h2"];
@@ -864,12 +871,10 @@ function more() {
   if (ddd == 0) {
   } else if (ddd == 1) {
     result = document
-      .getElementById("kettei" + ketteinum + "")
-      .innerHTML.replace(/&lt;/g, "&lt;");
-  } else {
-    result = document
       .getElementById("kettei" + ddd + "")
       .innerHTML.replace(/&lt;/g, "&lt;");
+
+
   }
   console.log(result);
   moreNum++;
