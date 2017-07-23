@@ -883,21 +883,32 @@ function getHints() {
 
   current = data.replace(/&lt;/g, "<");
   current = current.replace(/&gt;/g, ">");
-
+  // var hitns = list[current].slice(offset, offsetplus);
+  // if (hints[0] != null) {
   return list[current].slice(offset, offsetplus);
+  // } else {
+  //   offset = 0;
+  //   offsetplus = 3;
+  //   var hints = getHints();
+  // }
 }
-
+// var renderNum = 0; //renderŠÖ”‚ª‰½‰ñŒÄ‚Î‚ê‚½‚©
 function render() {
   //getHintsŠÖ”‚Ìoffset‚ğ‚±‚±‚Åİ’è‚·‚é[[¨getHintsŠÖ”“à‚É‘‚­‚ÆA‚R‰ñŒÄ‚Î‚ê‚Ä‚µ‚Ü‚¤‚©‚çB
   offset = offset + 3;
   console.log(offset);
   offsetplus = offset + 3;
   console.log(offsetplus);
+  // if (renderNum == 0) {
+  //   alert("eeeee!!!");
   //‚S‚Â‚ÌŒó•â‚ğì‚é
   var container = document.querySelector(".hint-container");
   //body‚Ì’†‚É‚ ‚éhint-container‚ğíœ‚·‚é
   // if (container != null) {
   document.body.removeChild(container); //‚S‚Â‚ÌŒó•â‚ğ•\¦‚·‚éDiv‚ğì‚é
+  // } else {
+  //   renderNum = 0;
+  // }
   // }
 
   var parent = document.createElement("div");
@@ -917,13 +928,27 @@ function render() {
 
   document.body.appendChild(parent);
 }
-
+var nullNum = 0;
 function createHintButton(className, num, parent) {
   var button = document.createElement("button");
   button.classList.add(className);
   parent.appendChild(button);
   var hints = getHints();
   button.textContent = hints[num];
+  if (hints[0] == null) {
+    nullNum++;
+    if (nullNum == 1) {
+      var countup = function() {
+        // alert("‹Ù‹}");
+        // renderNum = 1;
+        offset = -3;
+        offsetplus = 0;
+        nullNum = 0;
+        render();
+      };
+      setTimeout(countup, 10);
+    }
+  }
   console.log(hints[0]);
   console.log(hints[1]);
   console.log(hints[2]);
