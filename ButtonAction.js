@@ -97,13 +97,16 @@ function kaigyo() {
 }
 
 function first(datan) {
-  alert("aiueo");
+  // alert("aiueo");
   moreNum = 0;
   num++;
   document.write("<link rel='stylesheet' type='text/css' href='style.css'>");
-
   kurikaesi++;
   if (ketteinum == 0) {
+    document.write(
+      '<iframe id="preview" srcdoc=""　style="margin-top:100px;"></iframe>'
+    ); //仮
+
     // <li><a href=''>コードを書く</a></li><li><a href=''>他のプロジェクトを見る</a></li>
     document.write(
       "<header id='global-header'><center><h1 id='logo'><font color='#333333'>サイトを作成</font></h1></center><nav id='nav'><ul></ul></nav></header>"
@@ -819,12 +822,19 @@ function nextcode() {
 }
 
 function preview() {
-  str = array.join(",");
+  // console.log("押された");
+
+  str = array.join("");
   str = str.replace(/&lt;/g, "<");
   str = str.replace(/&gt;/g, ">");
   str = str.replace(/,/g, "");
   document.write(str);
-  console.log(str);
+
+  var previewText = document.querySelector("#preview");
+  previewText.srcdoc = str;
+  console.log(previewText.srcdoc);
+
+  // console.log(str);
   //   sentwoleft ++;
   // loopKetteiNum++;
   // kakkonum = kakkonum + 1;
