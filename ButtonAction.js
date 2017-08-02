@@ -10,19 +10,22 @@ function postValueCheck() {
 function codeFTP() {
   // if(str != ""){
   str = array.join(",");
-  str = str.replace(/&lt;/g, "<");
-  str = str.replace(/&gt;/g, ">");
+  str = str.replace(/</g, "<");
+  str = str.replace(/>/g, ">");
   str = str.replace(/,/g, "");
   document.write(str);
-  document.getElementById("code").value = str;
+
+  console.log(str);
+
+  // document.getElementById("code").value = str;
   // }else{
   //  document.getElementById("postform").action="";
   //
   // }
 }
-// document.write("<canvas id='senone' width='1000px;' height='1000px;'></canvas>");
+// document.write("<canvas id='nextLine' width='1000px;' height='1000px;'></canvas>");
 //
-// var canvas = document.getElementById( "senone" );
+// var canvas = document.getElementById( "nextLine" );
 // var ctx = canvas.getContext( "2d" );
 //
 // ctx.beginPath();
@@ -56,7 +59,7 @@ var Xpositon = 0;
 var moreNum = 0;
 var current = "";
 var list = {
-  "<center>": ["&lt;\u002fcenter&gt;", "</p>", "<a>", "<li>", "<p>", "<button"],
+  "<center>": ["<\u002fcenter>", "</p>", "<a>", "<li>", "<p>", "<button"],
   文字入力: ["href", "id", ">", "その他"],
   href: ["index.html", "test.html", ""],
   "index.html": [">", "</h1>", "<br>", "</p>"],
@@ -78,8 +81,8 @@ function kaigyo() {
   document.getElementById("first").onclick = new Function("first()");
 
   // str = array.join(',');
-  // str = str.replace( /&lt;/g , "<" ) ;
-  // str = str.replace( /&gt;/g , ">" ) ;
+  // str = str.replace( /</g , "<" ) ;
+  // str = str.replace( />/g , ">" ) ;
   // str = str.replace( /,/g , "" ) ;
   //
   // console.log(str);
@@ -91,8 +94,8 @@ function kaigyo() {
   // document.getElementById("button2").style.display="none";
   // document.getElementById("button3").style.display="none";
   //   document.getElementById("next").style.display="none";
-  //   document.getElementById("senone").style.display="none";
-  //   document.getElementById("numBack"+ketteinum+"").style.display="none";
+  //   document.getElementById("nextLine").style.display="none";
+  //   document.getElementById("backGroundColor"+ketteinum+"").style.display="none";
   //   document.getElementById("kettei"+ketteinum+"").onclick = new Function( "" );
 }
 
@@ -100,40 +103,62 @@ function first(datan) {
   // alert("aiueo");
   moreNum = 0;
   num++;
-  document.write("<link rel='stylesheet' type='text/css' href='style.css'>");
+  var link = document.createElement("link");
+  link.href = "style.css";
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  var h = document.getElementsByTagName("head")[0];
+  h.appendChild(link);
+  // document.write("<link rel='stylesheet' type='text/css' href='style.css'>");
   kurikaesi++;
   if (ketteinum == 0) {
-    document.write(
-      '<iframe id="preview" srcdoc=""　style="margin-top:100px;"></iframe>'
-    ); //仮
-
-    // <li><a href=''>コードを書く</a></li><li><a href=''>他のプロジェクトを見る</a></li>
-    document.write(
-      "<header id='global-header'><center><h1 id='logo'><font color='#333333'>サイトを作成</font></h1></center><nav id='nav'><ul></ul></nav></header>"
-    );
-    document.write(
-      "<button type='button' id='previewButton' onClick='preview()' style='left:" +
-        (window.innerWidth - 299) +
-        ";'>プレビュー</button>"
-    );
-    document.write(
-      "<button type='button' id='saveButton' onClick='save()' style='left:" +
-        (window.innerWidth - 398) +
-        ";'>保存</button>"
-    );
-
-    document.write(
-      "<form method='post' target='_blank' action='fff.php'><input type='hidden' name='code' id='code' value=''><button type='submit' id='postformb' value='Send' onclick='codeFTP();'  style='left:" +
-        (window.innerWidth - 100) +
-        ";'>公開</button></form>"
-    );
-
-    document.write(
-      "<button type='button' id='kaigyo' onClick='kaigyo()' style='position:absolute; top:60%; width:20%; height:50px;'>改行</button>"
-    );
-    document.write(
-      "<div id='html'><button type='button' id='first' onClick='first()' style='position:absolute; top:300px; width:150px; height:50px;'>HTML</button></div>"
-    );
+    // document.write(
+    //   '<iframe id="preview" srcdoc=""　style="margin-top:100px;"></iframe>'
+    // ); //仮
+    //
+    // //プレビューを表示するiframe
+    // var headerDiv = document.createElement("div");
+    //
+    // var previewIframe = document.createElement("iframe");
+    // previewIframe.classList.add("previewIframe");
+    // headerDiv.appendChild(previewIframe);
+    //
+    // var header = document.createElement("header"); //headerを作る
+    // headerDiv.appendChild(header);
+    // var nameH1 = document.createElement("h1"); //h1タグを作る
+    // header.appendChild(nameH1);
+    // var nameFont = document.createElement("font"); //fontタグを作る
+    // nameFont.textContent = "サイトを作成";
+    // nameH1.appendChild(nameFont);
+    //
+    // document.body.appendChild(headerDiv); //画面上部のヘッダー部分のDiv
+    // // <li><a href=''>コードを書く</a></li><li><a href=''>他のプロジェクトを見る</a></li>
+    // document.write(
+    //   "<header id='global-header'><center><h1 id='logo'><font color='#333333'>サイトを作成</font></h1></center><nav id='nav'><ul></ul></nav></header>"
+    // );
+    // document.write(
+    //   "<button type='button' id='previewButton' onClick='preview()' style='left:" +
+    //     (window.innerWidth - 299) +
+    //     ";'>プレビュー</button>"
+    // );
+    // document.write(
+    //   "<button type='button' id='saveButton' onClick='save()' style='left:" +
+    //     (window.innerWidth - 398) +
+    //     ";'>保存</button>"
+    // );
+    //
+    // document.write(
+    //   "<form method='post' target='_blank' action='fff.php'><input type='hidden' name='code' id='code' value=''><button type='submit' id='postformb' value='Send' onclick='codeFTP();'  style='left:" +
+    //     (window.innerWidth - 100) +
+    //     ";'>公開</button></form>"
+    // );
+    //
+    // document.write(
+    //   "<button type='button' id='kaigyo' onClick='kaigyo()' style='position:absolute; top:60%; width:20%; height:50px;'>改行</button>"
+    // );
+    // document.write(
+    //   "<div id='html'><button type='button' id='first' onClick='first()' style='position:absolute; top:300px; width:150px; height:50px;'>HTML</button></div>"
+    // );
   }
   // var x = document.getElementsByClassName("firstb");
 
@@ -141,37 +166,77 @@ function first(datan) {
     ketteinum++;
 
     if (ketteinum == 1) {
-      document.getElementById("first").onclick = new Function("");
+      // document.getElementById("first").onclick = new Function("");
 
-      document.write(
-        "<img src='numBack.png' id='numBack' style='position:absolute; top:140px;  left:158px; width:200px; height:370px; z-index:1;'>"
-      );
-      document.write(
-        "<img src='sen.png' id='senone' style='position:absolute; top:60px;  left:100px; width:200px; height:600px; z-index:2;'>"
-      );
-
-      document.write(
-        "<div class='hint-container'><button type='button' id='button1' onClick='first(0)' style='position:absolute; top:150px;  left:200px; width:150px; height:50px; z-index:2;'>&lt;center&gt;</button>"
-      );
-      document.write(
-        "<button type='button' id='button2' onClick='first(1)' style='position:absolute; top:250px;  left:200px; width:150px; height:50px; z-index:3;'>&lt;hr</button>"
-      );
-      document.write(
-        "<button type='button' id='button3' onClick='first(2)' style='position:absolute; top:350px;  left:200px; width:150px; height:50px; z-index:4;'>&lt;a</button>"
-      );
-      document.write(
-        "<button type='button' id='next' onClick='more()' style='position:absolute; top:450px;  left:200px; width:150px; height:50px; z-index:5;'>もっと見る</button></div>"
-      );
+      // document.write(
+      //   "<img src='backGroundColor.png' id='backGroundColor' style='position:absolute; top:140px;  left:158px; width:200px; height:370px; z-index:1;'>"
+      // );
+      // document.write(
+      //   "<img src='sen.png' id='nextLine' style='position:absolute; top:60px;  left:100px; width:200px; height:600px; z-index:2;'>"
+      // );
+      //
+      // document.write(
+      //   "<div class='hintcontainer'><button type='button' id='button1' onClick='first(0)' style='position:absolute; top:150px;  left:200px; width:150px; height:50px; z-index:2;'><center></button>"
+      // );
+      // document.write(
+      //   "<button type='button' id='button2' onClick='first(1)' style='position:absolute; top:250px;  left:200px; width:150px; height:50px; z-index:3;'><hr</button>"
+      // );
+      // document.write(
+      //   "<button type='button' id='button3' onClick='first(2)' style='position:absolute; top:350px;  left:200px; width:150px; height:50px; z-index:4;'><a</button>"
+      // );
+      // document.write(
+      //   "<button type='button' id='next' onClick='more()' style='position:absolute; top:450px;  left:200px; width:150px; height:50px; z-index:5;'>もっと見る</button></div>"
+      // );
 
       //????
       // document.write("<img src='sen.png' id='sentwo' style='position:absolute; top:250px;  left:150px; width:150px; height:50px;'>");
+
+      var hintcontainer = document.createElement("div");
+      hintcontainer.className = "hintcontainer";
+      document.body.appendChild(hintcontainer); //候補div
+
+      var nextLine = document.createElement("img");
+      nextLine.className = "nextLine";
+      nextLine.src = "sen.png";
+      hintcontainer.appendChild(nextLine); //候補を表示するための線
+
+      var backGroundColor = document.createElement("img");
+      backGroundColor.className = "backGroundColor";
+      backGroundColor.src = "backGroundColor.png";
+      hintcontainer.appendChild(backGroundColor); //候補を表示するところの背景
+
+      var one = document.createElement("button");
+      one.className = "button1";
+      one.style = "position:absolute;";
+      one.style = "top:1250px;";
+      one.textContent = "1";
+      hintcontainer.appendChild(one); // hintcontainer(候補のdiv ) に Button(候補) を追加
+
+      var two = document.createElement("button");
+      two.className = "button2";
+      two.textContent = "2";
+      hintcontainer.appendChild(two); // hintcontainer(候補のdiv ) に Button(候補) を追加
+
+      var three = document.createElement("button");
+      three.className = "button4";
+      three.textContent = "3";
+      hintcontainer.appendChild(three); // hintcontainer(候補のdiv ) に Button(候補) を追加
+
+      var four = document.createElement("button");
+      four.className = "next";
+      four.textContent = "4";
+      hintcontainer.appendChild(four); // hintcontainer(候補のdiv ) に Button(候補) を追加
+
+      // var objBody = document.getElementsByTagName("body").item(0);
+      // objBody.appendChild(element);
+      // body要素にdivエレメントを追加;
     } else {
       document.getElementById("first").onclick = new Function("");
 
       if (kakkonum == 0) {
         var left = ketteinum * 200;
         // var newleft = left - 51;
-        // document.write("<img src='numBack.png' id='numBack"+ketteinum+"' style='position:absolute; top:140px;  left:"+newleft+"px; width:200px; height:370px;'>");
+        // document.write("<img src='backGroundColor.png' id='backGroundColor"+ketteinum+"' style='position:absolute; top:140px;  left:"+newleft+"px; width:200px; height:370px;'>");
 
         var element = document.getElementById("button1");
         element.style.left = left;
@@ -181,12 +246,12 @@ function first(datan) {
         element2.style.left = left;
         var element3 = document.getElementById("next");
         element3.style.left = left;
-        var element4 = document.getElementById("senone");
+        var element4 = document.getElementById("nextLine");
         var senleft = left - 105;
         element4.style.left = senleft;
 
-        // document.getElementById("numBack").style.display="block";
-        var element5 = document.getElementById("numBack");
+        // document.getElementById("backGroundColor").style.display="block";
+        var element5 = document.getElementById("backGroundColor");
         var senleftA = left - 51;
         element5.style.left = senleftA;
       } else {
@@ -214,19 +279,19 @@ function first(datan) {
         element.style.left = left1;
         var top = loopKetteiNum * 80;
         element.style.top = top;
-        element.innerHTML = "&lt;center&gt;";
+        element.innerHTML = "<center>";
 
         var element1 = document.getElementById("button2");
         element1.style.left = left1;
         var top1 = top + 85;
         element1.style.top = top1;
-        element1.innerHTML = "&lt;hr";
+        element1.innerHTML = "<hr";
 
         var element2 = document.getElementById("button3");
         element2.style.left = left1;
         var top2 = top1 + 85;
         element2.style.top = top2;
-        element2.innerHTML = "&lt;a";
+        element2.innerHTML = "<a";
 
         var element3 = document.getElementById("next");
         element3.style.left = left1;
@@ -234,15 +299,15 @@ function first(datan) {
         element3.style.top = top3;
         element3.innerHTML = "もっと見る";
 
-        var element4 = document.getElementById("senone");
+        var element4 = document.getElementById("nextLine");
         var senleft = left1 - 105;
         element4.style.left = senleft;
 
-        var element5 = document.getElementById("numBack");
+        var element5 = document.getElementById("backGroundColor");
         var senleftA = left1 - 50;
         element5.style.left = senleftA;
 
-        // var element5 = document.getElementById("numBack");
+        // var element5 = document.getElementById("backGroundColor");
         // var sentopA = left1 - 105;
         // element5.style.top = sentopA;
       }
@@ -258,31 +323,43 @@ function first(datan) {
       document.getElementById("button2").style.display = "none";
       document.getElementById("button3").style.display = "none";
       document.getElementById("next").style.display = "none";
-      document.getElementById("senone").style.display = "none";
-      document.getElementById("numBack").style.display = "none";
+      document.getElementById("nextLine").style.display = "none";
+      document.getElementById("backGroundColor").style.display = "none";
     }
 
     num = 0;
 
     if (datan == 3) {
     } else {
-      document.write(
-        "<img src='sentwo.png' id='sentwo" +
-          ketteinum +
-          "' style='position:absolute; top:75px;  left:145px; width:70px; height:100px;'>"
-      );
+      // document.write(
+      //   "<img src='sentwo.png' id='sentwo" +
+      //     ketteinum +
+      //     "' style='position:absolute; top:75px;  left:145px; width:70px; height:100px;'>"
+      // );
+      var decisionDiv = document.createElement("div"); //決定したコードが格納されるDiv
+      decisionDiv.className = "decisionDiv";
 
-      document.write(
-        "<button type='button' id='kettei" +
-          ketteinum +
-          "' onClick='render()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'>&lt;h</button>"
-      );
+      var decisionLine = document.createElement("img"); //決定したボタンを繋げる線
+      decisionLine.src = "sentwo.png";
+      decisionDiv.appendChild("decisionLine");
+
+      var decisionButton = document.createElement("button"); //決定したボタン
+      decisionButton.className = "kettei";
+      decisionDiv.appendChild("decisonButton");
+
+      document.body.appendChild("decisionDiv");
+
+      // document.write(
+      //   "<button type='button' id='kettei" +
+      //     ketteinum +
+      //     "' onClick='render()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'><h</button>"
+      // );
     }
 
     // $("#html").append(
     //   "<button type='button' id='kettei" +
     //     ketteinum +
-    //     "' onClick='first()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'>&lt;h</button>"
+    //     "' onClick='first()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'><h</button>"
     // );
 
     if (kakkonum == 0) {
@@ -417,7 +494,7 @@ function first(datan) {
     //   var countup = function(){
     if (datan == 0) {
       var element = document.getElementById("button1");
-      result1234 = element.innerHTML.replace(/&lt;/g, "&lt;");
+      result1234 = element.innerHTML.replace(/</g, "<");
       var elem = document.getElementById("kettei" + ketteinum + "");
       elem.innerHTML = result1234;
       if (result1234.indexOf("\u002f") != -1) {
@@ -429,8 +506,8 @@ function first(datan) {
         // document.getElementById("button2").style.display="none";
         // document.getElementById("button3").style.display="none";
         //   document.getElementById("next").style.display="none";
-        //   document.getElementById("senone").style.display="none";
-        //   document.getElementById("numBack"+ketteinum+"").style.display="none";
+        //   document.getElementById("nextLine").style.display="none";
+        //   document.getElementById("backGroundColor"+ketteinum+"").style.display="none";
         //   document.getElementById("kettei"+ketteinum+"").onclick = new Function( "" );
       }
 
@@ -465,7 +542,7 @@ function first(datan) {
         // //?f?[?^?o??
         //
 
-        // var data2 = data1+ "&lt;"
+        // var data2 = data1+ "<"
         // document.write(data1);
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
         if (data1 == "href") {
@@ -485,7 +562,7 @@ function first(datan) {
           data1 = data1 + "'";
         }
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (data1.indexOf("&lt;") != -1 && data1.indexOf("&gt;") == -1) {
+        if (data1.indexOf("<") != -1 && data1.indexOf(">") == -1) {
           data1 = data1 + " ";
         }
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
@@ -548,7 +625,7 @@ function first(datan) {
           data1 = data1 + "'";
         }
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        if (data1.indexOf("&lt;") != -1 && data1.indexOf("&gt;") == -1) {
+        if (data1.indexOf("<") != -1 && data1.indexOf(">") == -1) {
           data1 = data1 + " ";
         }
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
@@ -587,13 +664,13 @@ function first(datan) {
       }
     }
     // var element = document.getElementById("button1");
-    // var result = element.innerHTML.replace(/&lt;/g, "&lt;");
+    // var result = element.innerHTML.replace(/</g, "<");
     // var elem = document.getElementById("kettei" + ketteinum + "");
     // elem.innerHTML = result;
     if (result.indexOf("\u002f") != -1) {
       // str = array.join(',');
-      // str = str.replace( /&lt;/g , "<" ) ;
-      // str = str.replace( /&gt;/g , ">" ) ;
+      // str = str.replace( /</g , "<" ) ;
+      // str = str.replace( />/g , ">" ) ;
       // str = str.replace( /,/g , "" ) ;
       //
       // console.log(str);
@@ -606,13 +683,13 @@ function first(datan) {
       // }
       // document.write(str);
       // document.write("<button type='button' id='previewButton' onClick='preview()' style='position:absolute; top:93.3%;  left:0%; width:100%; height:50px;'>?v???r???[</button>");
-      // document.write("<img src='&lt;imgpng' id='numBack"+ketteinum+"' style='position:absolute; top:60px;  left:100px; width:200px; height:600px;'>");
+      // document.write("<img src='<imgpng' id='backGroundColor"+ketteinum+"' style='position:absolute; top:60px;  left:100px; width:200px; height:600px;'>");
       // document.getElementById("button1").style.display="none";
       // document.getElementById("button2").style.display="none";
       // document.getElementById("button3").style.display="none";
       //   document.getElementById("next").style.display="none";
-      //   document.getElementById("senone").style.display="none";
-      //   document.getElementById("numBack"+ketteinum+"").style.display="none";
+      //   document.getElementById("nextLine").style.display="none";
+      //   document.getElementById("backGroundColor"+ketteinum+"").style.display="none";
       //   document.getElementById("kettei"+ketteinum+"").onclick = new Function( "" );
     }
   }
@@ -624,26 +701,26 @@ function first(datan) {
 
 function nextcode() {
   if (num == 1) {
-    document.getElementById("button1").style.display = "block";
-    document.getElementById("button2").style.display = "block";
-    document.getElementById("button3").style.display = "block";
-    document.getElementById("next").style.display = "block";
-    document.getElementById("senone").style.display = "block";
-    document.getElementById("numBack").style.display = "block";
+    // document.getElementById("button1").style.display = "block";
+    // document.getElementById("button2").style.display = "block";
+    // document.getElementById("button3").style.display = "block";
+    // document.getElementById("next").style.display = "block";
+    // document.getElementById("nextLine").style.display = "block";
+    // document.getElementById("backGroundColor").style.display = "block";
 
     // if(datan == 0){
 
     if (kurikaesi == 1) {
-      document.getElementById("button1").innerHTML = "&lt;center&gt;";
-      document.getElementById("button2").innerHTML = "&lt;hr";
-      document.getElementById("button3").innerHTML = "&lt;a";
-      document.getElementById("next").innerHTML = "その他"; //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      // document.getElementById("button1").innerHTML = "<center>";
+      // document.getElementById("button2").innerHTML = "<hr";
+      // document.getElementById("button3").innerHTML = "<a";
+      // document.getElementById("next").innerHTML = "その他"; //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
     } else {
       // var element="button2";
       var minusoneKN = ketteinum - 1;
       //?f?[?^???????
       data = document.getElementById("kettei" + minusoneKN + "").innerHTML;
-      current = data.replace(/&lt;/g, "&lt;");
+      current = data.replace(/</g, "<");
 
       // current = document.querySelector()にする。。。。
 
@@ -653,27 +730,22 @@ function nextcode() {
       // var elem = document.getElementById("kettei"+ketteinum+"");
       // elem.innerHTML = result;
 
-      if (result == "&lt;center&gt;") {
-        document.getElementById("button1").innerHTML = "&lt;h1&gt;";
-        var elem1 = (document.getElementById("button1").innerHTML =
-          "&lt;h1&gt;");
+      if (result == "<center>") {
+        document.getElementById("button1").innerHTML = "<h1>";
+        var elem1 = (document.getElementById("button1").innerHTML = "<h1>");
       }
-      if (
-        result == "&lt;h1&gt;" ||
-        result == "&lt;h2&gt;" ||
-        result == "&lt;br&gt;"
-      ) {
+      if (result == "<h1>" || result == "<h2>" || result == "<br>") {
         document.getElementById("button1").innerHTML = "文字入力";
       }
       if (result == "文字入力") {
         var elem1 = document.getElementById("button1");
-        elem1.innerHTML = "&lt;\u002fh1&gt;";
+        elem1.innerHTML = "<\u002fh1>";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "&lt;a") {
+      if (result == "<a") {
         document.getElementById("button1").innerHTML = "href";
         document.getElementById("button2").innerHTML = "id";
-        document.getElementById("button3").innerHTML = "&gt;";
+        document.getElementById("button3").innerHTML = ">";
         document.getElementById("next").innerHTML = "その他";
       }
 
@@ -686,42 +758,42 @@ function nextcode() {
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "index.html") {
-        document.getElementById("button1").innerHTML = "&gt;";
-        document.getElementById("button2").innerHTML = "&lt;\u002fh2&gt;";
-        document.getElementById("button3").innerHTML = "&lt;br&gt;";
-        document.getElementById("next").innerHTML = "&lt;\u002fp&gt;";
+        document.getElementById("button1").innerHTML = ">";
+        document.getElementById("button2").innerHTML = "<\u002fh2>";
+        document.getElementById("button3").innerHTML = "<br>";
+        document.getElementById("next").innerHTML = "<\u002fp>";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "&gt;") {
+      if (result == ">") {
         document.getElementById("button1").innerHTML = "ホーム";
         document.getElementById("button2").innerHTML = "自己紹介";
-        document.getElementById("button3").innerHTML = "&lt;h1&gt;";
+        document.getElementById("button3").innerHTML = "<h1>";
         document.getElementById("next").innerHTML = "その他";
       }
 
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "ホーム") {
-        document.getElementById("button1").innerHTML = "&lt;\u002fa&gt;";
-        document.getElementById("button2").innerHTML = "&lt;h1&gt;";
-        document.getElementById("button3").innerHTML = "&lt;h1&gt;";
+        document.getElementById("button1").innerHTML = "<\u002fa>";
+        document.getElementById("button2").innerHTML = "<h1>";
+        document.getElementById("button3").innerHTML = "<h1>";
         document.getElementById("next").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "test.html") {
-        document.getElementById("button1").innerHTML = "&gt;";
+        document.getElementById("button1").innerHTML = ">";
         document.getElementById("button2").innerHTML = "id";
         document.getElementById("button3").innerHTML = "";
         document.getElementById("next").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "自己紹介") {
-        document.getElementById("button1").innerHTML = "&lt;\u002fa&gt;";
-        document.getElementById("button2").innerHTML = "&lt;h1&gt;";
-        document.getElementById("button3").innerHTML = "&lt;h1&gt;";
+        document.getElementById("button1").innerHTML = "<\u002fa>";
+        document.getElementById("button2").innerHTML = "<h1>";
+        document.getElementById("button3").innerHTML = "<h1>";
         document.getElementById("next").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "&lt;hr") {
+      if (result == "<hr") {
         document.getElementById("button1").innerHTML = "width";
         document.getElementById("button2").innerHTML = "height";
         document.getElementById("button3").innerHTML = "";
@@ -743,13 +815,13 @@ function nextcode() {
         result == "5" ||
         result == "10"
       ) {
-        document.getElementById("button1").innerHTML = "&gt;";
+        document.getElementById("button1").innerHTML = ">";
         document.getElementById("button2").innerHTML = "";
         document.getElementById("button3").innerHTML = "";
         document.getElementById("next").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "&lt;img") {
+      if (result == "<img") {
         document.getElementById("button1").innerHTML = "src";
         document.getElementById("button2").innerHTML = "id";
         document.getElementById("button3").innerHTML = "alt";
@@ -758,29 +830,29 @@ function nextcode() {
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "src") {
         document.getElementById("button1").innerHTML = "url.jpg";
-        document.getElementById("button2").innerHTML = "&lt;h1&gt;";
-        document.getElementById("button3").innerHTML = "&lt;h1&gt;";
+        document.getElementById("button2").innerHTML = "<h1>";
+        document.getElementById("button3").innerHTML = "<h1>";
         document.getElementById("next").innerHTML = "その他";
       } else if (result == "url.jpg") {
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
         //.jpg??.pngその他その他?
-        document.getElementById("button1").innerHTML = "&gt;";
-        document.getElementById("button2").innerHTML = "&lt;h1&gt;";
-        document.getElementById("button3").innerHTML = "&lt;h1&gt;";
+        document.getElementById("button1").innerHTML = ">";
+        document.getElementById("button2").innerHTML = "<h1>";
+        document.getElementById("button3").innerHTML = "<h1>";
         document.getElementById("next").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "&lt;p&gt;") {
+      if (result == "<p>") {
         document.getElementById("button1").innerHTML = "文字入力";
-        document.getElementById("button2").innerHTML = "&lt;h1&gt;";
-        document.getElementById("button3").innerHTML = "&lt;h1&gt;";
+        document.getElementById("button2").innerHTML = "<h1>";
+        document.getElementById("button3").innerHTML = "<h1>";
         document.getElementById("next").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "&lt;font") {
+      if (result == "<font") {
         document.getElementById("button1").innerHTML = "size";
-        document.getElementById("button2").innerHTML = "&lt;h1&gt;";
-        document.getElementById("button3").innerHTML = "&lt;h1&gt;";
+        document.getElementById("button2").innerHTML = "<h1>";
+        document.getElementById("button3").innerHTML = "<h1>";
         document.getElementById("next").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
@@ -792,41 +864,42 @@ function nextcode() {
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "") {
-        document.getElementById("button1").innerHTML = "&lt;\u002fh1&gt;";
-        document.getElementById("button2").innerHTML = "&lt;h1&gt;";
-        document.getElementById("button3").innerHTML = "&lt;h1&gt;";
+        document.getElementById("button1").innerHTML = "<\u002fh1>";
+        document.getElementById("button2").innerHTML = "<h1>";
+        document.getElementById("button3").innerHTML = "<h1>";
         document.getElementById("next").innerHTML = "その他";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "") {
-        document.getElementById("button1").innerHTML = "&lt;\u002fh1&gt;";
-        document.getElementById("button2").innerHTML = "&lt;h1&gt;";
-        document.getElementById("button3").innerHTML = "&lt;h1&gt;";
+        document.getElementById("button1").innerHTML = "<\u002fh1>";
+        document.getElementById("button2").innerHTML = "<h1>";
+        document.getElementById("button3").innerHTML = "<h1>";
         document.getElementById("next").innerHTML = "その他";
       }
       document.getElementById("next").innerHTML = "その他";
     }
   }
   var center = ["<h1", "<hr", "<h2"];
-  function upcode() {
-    if (ketteinum < 3) {
-    } else {
-      var minusoneKN = ketteinum - 1;
-
-      var data = document.getElementById("kettei" + minusoneKN + "").innerHTML;
-      //?f?[?^?o??
-
-      document.write(data);
-    }
-  }
+  // function upcode() {
+  //   if (ketteinum < 3) {
+  //   } else {
+  //     var minusoneKN = ketteinum - 1;
+  //
+  //     var data = document.getElementById("kettei" + minusoneKN + "").innerHTML;
+  //     //?f?[?^?o??
+  //
+  //     document.write(data);
+  //   }
+  // }
 }
 
 function preview() {
+  //プレビュー
   // console.log("押された");
 
   str = array.join("");
-  str = str.replace(/&lt;/g, "<");
-  str = str.replace(/&gt;/g, ">");
+  str = str.replace(/</g, "<");
+  str = str.replace(/>/g, ">");
   str = str.replace(/,/g, "");
   document.write(str);
 
@@ -850,7 +923,7 @@ function more() {
   // } else if (ddd == 1) {
   //   result = document
   //     .getElementById("kettei" + ddd + "")
-  //     .innerHTML.replace(/&lt;/g, "&lt;");
+  //     .innerHTML.replace(/</g, "<");
   // }
   // console.log(result);
   // moreNum++;
@@ -893,8 +966,8 @@ function getHints() {
   // alert(minusoneKN);
   data = document.getElementById("kettei" + ketteinum + "").innerHTML;
 
-  current = data.replace(/&lt;/g, "<");
-  current = current.replace(/&gt;/g, ">");
+  current = data.replace(/</g, "<");
+  current = current.replace(/>/g, ">");
   // var hitns = list[current].slice(offset, offsetplus);
   // if (hints[0] != null) {
   return list[current].slice(offset, offsetplus);
@@ -914,8 +987,8 @@ function render() {
   // if (renderNum == 0) {
   //   alert("eeeee!!!");
   //４つの候補を作る
-  var container = document.querySelector(".hint-container");
-  //bodyの中にあるhint-containerを削除する
+  var container = document.querySelector(".hintcontainer");
+  //bodyの中にあるhintcontainerを削除する
   // if (container != null) {
   document.body.removeChild(container); //４つの候補を表示するDivを作る
   // } else {
@@ -924,7 +997,7 @@ function render() {
   // }
 
   var parent = document.createElement("div");
-  parent.classList.add("hint-container");
+  parent.classList.add("hintcontainer");
 
   //createHintButton関数に以下の３つの情報を投げて、appendChildさせる
   createHintButton("button1", 0, parent);
@@ -944,7 +1017,7 @@ var nullNum = 0;
 function createHintButton(className, num, parent) {
   var button = document.createElement("button");
   button.classList.add(className);
-  button.addEventListener("click", first, false);
+  button.onclick = "first(" + num + ")";
   parent.appendChild(button);
   var hints = getHints();
   button.textContent = hints[num];
