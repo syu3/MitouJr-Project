@@ -60,19 +60,19 @@ var moreNum = 0;
 var current = "";
 var list = {
   "<center>": ["<\u002fcenter>", "</p>", "<a>", "<li>", "<p>", "<button"],
-  •¶š“ü—Í: ["href", "id", ">", "‚»‚Ì‘¼"],
+  æ–‡å­—å…¥åŠ›: ["href", "id", ">", "ãã®ä»–"],
   href: ["index.html", "test.html", ""],
   "index.html": [">", "</h1>", "<br>", "</p>"],
-  ">": ["ƒz[ƒ€", "©ŒÈĞ‰î", ""],
-  ƒz[ƒ€: ["</a>", "", ""],
+  ">": ["ãƒ›ãƒ¼ãƒ ", "è‡ªå·±ç´¹ä»‹", ""],
+  ãƒ›ãƒ¼ãƒ : ["</a>", "", ""],
   "test.html": [">", "id", "style"],
-  ©ŒÈĞ‰î: ["</a>", "", ""],
+  è‡ªå·±ç´¹ä»‹: ["</a>", "", ""],
   "<hr": ["widht", "height", ""],
   width: ["300px", "400px", "500px", "600px", "100%"],
   "<img": ["src", "id", "alt"],
   src: ["url.jpg", "", ""],
   "url.jpg": [">", "", ""],
-  "<p>": ["•¶š“ü—Í", "", ""],
+  "<p>": ["æ–‡å­—å…¥åŠ›", "", ""],
   "<font": ["size", "color", ""],
   size: ["3", "5", "10"]
 };
@@ -100,7 +100,7 @@ function kaigyo() {
 }
 
 function first(datan) {
-  console.log("first‚ªŒÄ‚Î‚ê‚½");
+  console.log("firstãŒå‘¼ã°ã‚ŒãŸ");
   // alert("aiueo");
   moreNum = 0;
   num++;
@@ -114,48 +114,48 @@ function first(datan) {
   kurikaesi++;
   if (ketteinum == 0) {
     // document.write(
-    //   '<iframe id="preview" srcdoc=""@style="margin-top:100px;"></iframe>'
-    // ); //‰¼
+    //   '<iframe id="preview" srcdoc=""ã€€style="margin-top:100px;"></iframe>'
+    // ); //ä»®
     //
-    // //ƒvƒŒƒrƒ…[‚ğ•\¦‚·‚éiframe
+    // //ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹iframe
     // var headerDiv = document.createElement("div");
     //
     // var previewIframe = document.createElement("iframe");
     // previewIframe.classList.add("previewIframe");
     // headerDiv.appendChild(previewIframe);
     //
-    // var header = document.createElement("header"); //header‚ğì‚é
+    // var header = document.createElement("header"); //headerã‚’ä½œã‚‹
     // headerDiv.appendChild(header);
-    // var nameH1 = document.createElement("h1"); //h1ƒ^ƒO‚ğì‚é
+    // var nameH1 = document.createElement("h1"); //h1ã‚¿ã‚°ã‚’ä½œã‚‹
     // header.appendChild(nameH1);
-    // var nameFont = document.createElement("font"); //fontƒ^ƒO‚ğì‚é
-    // nameFont.textContent = "ƒTƒCƒg‚ğì¬";
+    // var nameFont = document.createElement("font"); //fontã‚¿ã‚°ã‚’ä½œã‚‹
+    // nameFont.textContent = "ã‚µã‚¤ãƒˆã‚’ä½œæˆ";
     // nameH1.appendChild(nameFont);
     //
-    // document.body.appendChild(headerDiv); //‰æ–Êã•”‚Ìƒwƒbƒ_[•”•ª‚ÌDiv
-    // // <li><a href=''>ƒR[ƒh‚ğ‘‚­</a></li><li><a href=''>‘¼‚ÌƒvƒƒWƒFƒNƒg‚ğŒ©‚é</a></li>
+    // document.body.appendChild(headerDiv); //ç”»é¢ä¸Šéƒ¨ã®ãƒ˜ãƒƒãƒ€ãƒ¼éƒ¨åˆ†ã®Div
+    // // <li><a href=''>ã‚³ãƒ¼ãƒ‰ã‚’æ›¸ã</a></li><li><a href=''>ä»–ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’è¦‹ã‚‹</a></li>
     // document.write(
-    //   "<header id='global-header'><center><h1 id='logo'><font color='#333333'>ƒTƒCƒg‚ğì¬</font></h1></center><nav id='nav'><ul></ul></nav></header>"
+    //   "<header id='global-header'><center><h1 id='logo'><font color='#333333'>ã‚µã‚¤ãƒˆã‚’ä½œæˆ</font></h1></center><nav id='nav'><ul></ul></nav></header>"
     // );
     // document.write(
     //   "<button type='button' id='previewButton' onClick='preview()' style='left:" +
     //     (window.innerWidth - 299) +
-    //     ";'>ƒvƒŒƒrƒ…[</button>"
+    //     ";'>ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼</button>"
     // );
     // document.write(
     //   "<button type='button' id='saveButton' onClick='save()' style='left:" +
     //     (window.innerWidth - 398) +
-    //     ";'>•Û‘¶</button>"
+    //     ";'>ä¿å­˜</button>"
     // );
     //
     // document.write(
     //   "<form method='post' target='_blank' action='fff.php'><input type='hidden' name='code' id='code' value=''><button type='submit' id='postformb' value='Send' onclick='codeFTP();'  style='left:" +
     //     (window.innerWidth - 100) +
-    //     ";'>ŒöŠJ</button></form>"
+    //     ";'>å…¬é–‹</button></form>"
     // );
     //
     // document.write(
-    //   "<button type='button' id='kaigyo' onClick='kaigyo()' style='position:absolute; top:60%; width:20%; height:50px;'>‰üs</button>"
+    //   "<button type='button' id='kaigyo' onClick='kaigyo()' style='position:absolute; top:60%; width:20%; height:50px;'>æ”¹è¡Œ</button>"
     // );
     // document.write(
     //   "<div id='html'><button type='button' id='first' onClick='first()' style='position:absolute; top:300px; width:150px; height:50px;'>HTML</button></div>"
@@ -186,7 +186,7 @@ function first(datan) {
       //   "<button type='button' id='button3' onClick='first(2)' style='position:absolute; top:350px;  left:200px; width:150px; height:50px; z-index:4;'><a</button>"
       // );
       // document.write(
-      //   "<button type='button' id='next' onClick='more()' style='position:absolute; top:450px;  left:200px; width:150px; height:50px; z-index:5;'>‚à‚Á‚ÆŒ©‚é</button></div>"
+      //   "<button type='button' id='next' onClick='more()' style='position:absolute; top:450px;  left:200px; width:150px; height:50px; z-index:5;'>ã‚‚ã£ã¨è¦‹ã‚‹</button></div>"
       // );
 
       //????
@@ -194,49 +194,49 @@ function first(datan) {
 
       var hintcontainer = document.createElement("div");
       hintcontainer.className = "hintcontainer";
-      document.body.appendChild(hintcontainer); //Œó•âdiv
+      document.body.appendChild(hintcontainer); //å€™è£œdiv
 
       var nextLine = document.createElement("img");
       nextLine.className = "nextLine";
       nextLine.src = "sen.png";
-      hintcontainer.appendChild(nextLine); //Œó•â‚ğ•\¦‚·‚é‚½‚ß‚Ìü
+      hintcontainer.appendChild(nextLine); //å€™è£œã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã®ç·š
 
       var backGroundColor = document.createElement("img");
       backGroundColor.className = "backGroundColor";
       backGroundColor.src = "backGroundColor.png";
-      hintcontainer.appendChild(backGroundColor); //Œó•â‚ğ•\¦‚·‚é‚Æ‚±‚ë‚Ì”wŒi
+      hintcontainer.appendChild(backGroundColor); //å€™è£œã‚’è¡¨ç¤ºã™ã‚‹ã¨ã“ã‚ã®èƒŒæ™¯
 
       var one = document.createElement("button");
       one.className = "button1";
       one.style = "position:absolute;";
       one.style = "top:1250px;";
       one.textContent = "1";
-      hintcontainer.appendChild(one); // hintcontainer(Œó•â‚Ìdiv ) ‚É Button(Œó•â) ‚ğ’Ç‰Á
+      hintcontainer.appendChild(one); // hintcontainer(å€™è£œã®div ) ã« Button(å€™è£œ) ã‚’è¿½åŠ 
 
       console.log(one);
       one.addEventListener("click", function() {
-        console.log("addEventListener‚ªŒÄ‚Î‚ê‚½");
+        console.log("addEventListenerãŒå‘¼ã°ã‚ŒãŸ");
         first(0);
       });
 
       var two = document.createElement("button");
       two.className = "button2";
       two.textContent = "2";
-      hintcontainer.appendChild(two); // hintcontainer(Œó•â‚Ìdiv ) ‚É Button(Œó•â) ‚ğ’Ç‰Á
+      hintcontainer.appendChild(two); // hintcontainer(å€™è£œã®div ) ã« Button(å€™è£œ) ã‚’è¿½åŠ 
 
       var three = document.createElement("button");
       three.className = "button4";
       three.textContent = "3";
-      hintcontainer.appendChild(three); // hintcontainer(Œó•â‚Ìdiv ) ‚É Button(Œó•â) ‚ğ’Ç‰Á
+      hintcontainer.appendChild(three); // hintcontainer(å€™è£œã®div ) ã« Button(å€™è£œ) ã‚’è¿½åŠ 
 
       var four = document.createElement("button");
       four.className = "next";
       four.textContent = "4";
-      hintcontainer.appendChild(four); // hintcontainer(Œó•â‚Ìdiv ) ‚É Button(Œó•â) ‚ğ’Ç‰Á
+      hintcontainer.appendChild(four); // hintcontainer(å€™è£œã®div ) ã« Button(å€™è£œ) ã‚’è¿½åŠ 
 
       // var objBody = document.getElementsByTagName("body").item(0);
       // objBody.appendChild(element);
-      // body—v‘f‚ÉdivƒGƒŒƒƒ“ƒg‚ğ’Ç‰Á;
+      // bodyè¦ç´ ã«divã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’è¿½åŠ ;
     } else {
       document.getElementById("first").onclick = new Function("");
 
@@ -263,7 +263,7 @@ function first(datan) {
         element5.style.left = senleftA;
       } else {
         var left1 = 0;
-        ketteinum1 = ketteinum1 + 1; //‚»‚Ì‘¼‚»‚Ì‘¼???????
+        ketteinum1 = ketteinum1 + 1; //ãã®ä»–ãã®ä»–???????
         var kurikaesi1 = kurikaesi - 1;
         if (kurikaesi1 == 0) {
           // Xpositon = 205;
@@ -304,7 +304,7 @@ function first(datan) {
         element3.style.left = left1;
         var top3 = top2 + 105;
         element3.style.top = top3;
-        element3.innerHTML = "‚à‚Á‚ÆŒ©‚é";
+        element3.innerHTML = "ã‚‚ã£ã¨è¦‹ã‚‹";
 
         var element4 = document.getElementById("nextLine");
         var senleft = left1 - 105;
@@ -343,14 +343,14 @@ function first(datan) {
       //     ketteinum +
       //     "' style='position:absolute; top:75px;  left:145px; width:70px; height:100px;'>"
       // );
-      var decisionDiv = document.createElement("div"); //Œˆ’è‚µ‚½ƒR[ƒh‚ªŠi”[‚³‚ê‚éDiv
+      var decisionDiv = document.createElement("div"); //æ±ºå®šã—ãŸã‚³ãƒ¼ãƒ‰ãŒæ ¼ç´ã•ã‚Œã‚‹Div
       decisionDiv.className = "decisionDiv";
 
-      var decisionLine = document.createElement("img"); //Œˆ’è‚µ‚½ƒ{ƒ^ƒ“‚ğŒq‚°‚éü
+      var decisionLine = document.createElement("img"); //æ±ºå®šã—ãŸãƒœã‚¿ãƒ³ã‚’ç¹‹ã’ã‚‹ç·š
       decisionLine.src = "sentwo.png";
       decisionDiv.appendChild("decisionLine");
 
-      var decisionButton = document.createElement("button"); //Œˆ’è‚µ‚½ƒ{ƒ^ƒ“
+      var decisionButton = document.createElement("button"); //æ±ºå®šã—ãŸãƒœã‚¿ãƒ³
       decisionButton.className = "kettei" + ketteinum + "";
       decisionDiv.appendChild("decisonButton");
 
@@ -455,7 +455,7 @@ function first(datan) {
 
             element.style.left = 145;
             element.style.top = loopKetteiNum * 132.5;
-            var senleft1 = ketteinum1 * 145; //kettei??{?^‚»‚Ì‘¼‚»‚Ì‘¼@?@?@??????top??????
+            var senleft1 = ketteinum1 * 145; //kettei??{?^ãã®ä»–ãã®ä»–@?@?@??????top??????
             var element1 = document.getElementById("sentwo" + ketteinum + "");
             element1.style.left = 145;
             element1.style.top = loopKetteiNum * 132.5;
@@ -478,13 +478,13 @@ function first(datan) {
             element.style.top = loopKetteiNum * 132.5;
             alert("haihai");
 
-            //     var senleft1 = ketteinum1 * 145;//kettei??{?^‚»‚Ì‘¼‚»‚Ì‘¼@?@?@??????top??????
+            //     var senleft1 = ketteinum1 * 145;//kettei??{?^ãã®ä»–ãã®ä»–@?@?@??????top??????
             //     var element1 = document.getElementById("sentwo"+ketteinum+"");
             //     element1.style.left = senleft1;
             //     element1.style.top = 265;
             //     document.getElementById("sentwo").style.display="block";
             // }else{
-            var senleft1 = ketteinum1 * 175; //kettei??{?^‚»‚Ì‘¼‚»‚Ì‘¼@?@?@??????top??????
+            var senleft1 = ketteinum1 * 175; //kettei??{?^ãã®ä»–ãã®ä»–@?@?@??????top??????
             var element1 = document.getElementById("sentwo" + ketteinum + "");
             element1.style.left = positionX;
             element1.style.top = loopKetteiNum * 132.5;
@@ -592,7 +592,7 @@ function first(datan) {
   // }
 }
 
-//‚»‚Ì‘¼A????R?[?h???\‚»‚Ì‘¼???[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+//ãã®ä»–A????R?[?h???\ãã®ä»–???[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
 
 function nextcode() {
   if (num == 1) {
@@ -609,7 +609,7 @@ function nextcode() {
       // document.getElementById("button1").innerHTML = "<center>";
       // document.getElementById("button2").innerHTML = "<hr";
       // document.getElementById("button3").innerHTML = "<a";
-      // document.getElementById("next").innerHTML = "‚»‚Ì‘¼"; //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
+      // document.getElementById("next").innerHTML = "ãã®ä»–"; //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
     } else {
       // var element="button2";
       var minusoneKN = ketteinum - 1;
@@ -617,7 +617,7 @@ function nextcode() {
       data = document.getElementById("kettei" + minusoneKN + "").innerHTML;
       current = data.replace(/</g, "<");
 
-      // current = document.querySelector()‚É‚·‚éBBBB
+      // current = document.querySelector()ã«ã™ã‚‹ã€‚ã€‚ã€‚ã€‚
 
       // alert(result);
       console.log(list[result]);
@@ -630,9 +630,9 @@ function nextcode() {
         var elem1 = (document.getElementById("button1").innerHTML = "<h1>");
       }
       if (result == "<h1>" || result == "<h2>" || result == "<br>") {
-        document.getElementById("button1").innerHTML = "•¶š“ü—Í";
+        document.getElementById("button1").innerHTML = "æ–‡å­—å…¥åŠ›";
       }
-      if (result == "•¶š“ü—Í") {
+      if (result == "æ–‡å­—å…¥åŠ›") {
         var elem1 = document.getElementById("button1");
         elem1.innerHTML = "<\u002fh1>";
       }
@@ -641,7 +641,7 @@ function nextcode() {
         document.getElementById("button1").innerHTML = "href";
         document.getElementById("button2").innerHTML = "id";
         document.getElementById("button3").innerHTML = ">";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
 
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
@@ -649,7 +649,7 @@ function nextcode() {
         document.getElementById("button1").innerHTML = "index.html";
         document.getElementById("button2").innerHTML = "test.html";
         document.getElementById("button3").innerHTML = "";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "index.html") {
@@ -660,46 +660,46 @@ function nextcode() {
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == ">") {
-        document.getElementById("button1").innerHTML = "ƒz[ƒ€";
-        document.getElementById("button2").innerHTML = "©ŒÈĞ‰î";
+        document.getElementById("button1").innerHTML = "ãƒ›ãƒ¼ãƒ ";
+        document.getElementById("button2").innerHTML = "è‡ªå·±ç´¹ä»‹";
         document.getElementById("button3").innerHTML = "<h1>";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
 
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "ƒz[ƒ€") {
+      if (result == "ãƒ›ãƒ¼ãƒ ") {
         document.getElementById("button1").innerHTML = "<\u002fa>";
         document.getElementById("button2").innerHTML = "<h1>";
         document.getElementById("button3").innerHTML = "<h1>";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "test.html") {
         document.getElementById("button1").innerHTML = ">";
         document.getElementById("button2").innerHTML = "id";
         document.getElementById("button3").innerHTML = "";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-      if (result == "©ŒÈĞ‰î") {
+      if (result == "è‡ªå·±ç´¹ä»‹") {
         document.getElementById("button1").innerHTML = "<\u002fa>";
         document.getElementById("button2").innerHTML = "<h1>";
         document.getElementById("button3").innerHTML = "<h1>";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "<hr") {
         document.getElementById("button1").innerHTML = "width";
         document.getElementById("button2").innerHTML = "height";
         document.getElementById("button3").innerHTML = "";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "width") {
         document.getElementById("button1").innerHTML = "300";
         document.getElementById("button2").innerHTML = "400";
         document.getElementById("button3").innerHTML = "500";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (
@@ -713,65 +713,65 @@ function nextcode() {
         document.getElementById("button1").innerHTML = ">";
         document.getElementById("button2").innerHTML = "";
         document.getElementById("button3").innerHTML = "";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "<img") {
         document.getElementById("button1").innerHTML = "src";
         document.getElementById("button2").innerHTML = "id";
         document.getElementById("button3").innerHTML = "alt";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "src") {
         document.getElementById("button1").innerHTML = "url.jpg";
         document.getElementById("button2").innerHTML = "<h1>";
         document.getElementById("button3").innerHTML = "<h1>";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       } else if (result == "url.jpg") {
         //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-        //.jpg??.png‚»‚Ì‘¼‚»‚Ì‘¼?
+        //.jpg??.pngãã®ä»–ãã®ä»–?
         document.getElementById("button1").innerHTML = ">";
         document.getElementById("button2").innerHTML = "<h1>";
         document.getElementById("button3").innerHTML = "<h1>";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "<p>") {
-        document.getElementById("button1").innerHTML = "•¶š“ü—Í";
+        document.getElementById("button1").innerHTML = "æ–‡å­—å…¥åŠ›";
         document.getElementById("button2").innerHTML = "<h1>";
         document.getElementById("button3").innerHTML = "<h1>";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "<font") {
         document.getElementById("button1").innerHTML = "size";
         document.getElementById("button2").innerHTML = "<h1>";
         document.getElementById("button3").innerHTML = "<h1>";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "size") {
         document.getElementById("button1").innerHTML = "3";
         document.getElementById("button2").innerHTML = "5";
         document.getElementById("button3").innerHTML = "10";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "") {
         document.getElementById("button1").innerHTML = "<\u002fh1>";
         document.getElementById("button2").innerHTML = "<h1>";
         document.getElementById("button3").innerHTML = "<h1>";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
       if (result == "") {
         document.getElementById("button1").innerHTML = "<\u002fh1>";
         document.getElementById("button2").innerHTML = "<h1>";
         document.getElementById("button3").innerHTML = "<h1>";
-        document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+        document.getElementById("next").innerHTML = "ãã®ä»–";
       }
-      document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+      document.getElementById("next").innerHTML = "ãã®ä»–";
     }
   }
   var center = ["<h1", "<hr", "<h2"];
@@ -789,8 +789,8 @@ function nextcode() {
 }
 
 function preview() {
-  //ƒvƒŒƒrƒ…[
-  // console.log("‰Ÿ‚³‚ê‚½");
+  //ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼
+  // console.log("æŠ¼ã•ã‚ŒãŸ");
 
   str = array.join("");
   str = str.replace(/</g, "<");
@@ -842,12 +842,12 @@ function more() {
   //   document.getElementById("button1").innerHTML = value1;
   //   document.getElementById("button2").innerHTML = value2;
   //   document.getElementById("button3").innerHTML = value3;
-  //   document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+  //   document.getElementById("next").innerHTML = "ãã®ä»–";
   // } else {
   //   document.getElementById("button1").innerHTML = value1;
   //   document.getElementById("button2").innerHTML = value2;
   //   document.getElementById("button3").innerHTML = value3;
-  //   document.getElementById("next").innerHTML = "‚»‚Ì‘¼";
+  //   document.getElementById("next").innerHTML = "ãã®ä»–";
   // }
 }
 
@@ -855,8 +855,8 @@ var offset = -3;
 var offsetplus = 0;
 
 function getHints() {
-  //‚»‚Ì‘¼ƒ{ƒ^ƒ“
-  //‚S‚Â‚ÌŒó•â‚Ì’†g‚ğ•Ï‚¦‚é
+  //ãã®ä»–ãƒœã‚¿ãƒ³
+  //ï¼”ã¤ã®å€™è£œã®ä¸­èº«ã‚’å¤‰ãˆã‚‹
   var minusoneKN = ketteinum + 1;
   // alert(minusoneKN);
   data = document.getElementById("kettei" + ketteinum + "").innerHTML;
@@ -872,22 +872,22 @@ function getHints() {
   //   var hints = getHints();
   // }
 }
-// var renderNum = 0; //renderŠÖ”‚ª‰½‰ñŒÄ‚Î‚ê‚½‚©
+// var renderNum = 0; //renderé–¢æ•°ãŒä½•å›å‘¼ã°ã‚ŒãŸã‹
 function render() {
-  //render‚Æ‚ÍA‚»‚Ì‘¼ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Ì‹““®
+  //renderã¨ã¯ã€ãã®ä»–ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸæ™‚ã®æŒ™å‹•
 
-  //getHintsŠÖ”‚Ìoffset‚ğ‚±‚±‚Åİ’è‚·‚é[[¨getHintsŠÖ”“à‚É‘‚­‚ÆA‚R‰ñŒÄ‚Î‚ê‚Ä‚µ‚Ü‚¤‚©‚çB
+  //getHintsé–¢æ•°ã®offsetã‚’ã“ã“ã§è¨­å®šã™ã‚‹ãƒ¼ãƒ¼â†’getHintsé–¢æ•°å†…ã«æ›¸ãã¨ã€ï¼“å›å‘¼ã°ã‚Œã¦ã—ã¾ã†ã‹ã‚‰ã€‚
   offset = offset + 3;
   console.log(offset);
   offsetplus = offset + 3;
   console.log(offsetplus);
   // if (renderNum == 0) {
   //   alert("eeeee!!!");
-  //‚S‚Â‚ÌŒó•â‚ğì‚é
+  //ï¼”ã¤ã®å€™è£œã‚’ä½œã‚‹
   var container = document.querySelector(".hintcontainer");
-  //body‚Ì’†‚É‚ ‚éhintcontainer‚ğíœ‚·‚é
+  //bodyã®ä¸­ã«ã‚ã‚‹hintcontainerã‚’å‰Šé™¤ã™ã‚‹
   // if (container != null) {
-  document.body.removeChild(container); //‚S‚Â‚ÌŒó•â‚ğ•\¦‚·‚éDiv‚ğì‚é
+  document.body.removeChild(container); //ï¼”ã¤ã®å€™è£œã‚’è¡¨ç¤ºã™ã‚‹Divã‚’ä½œã‚‹
   // } else {
   //   renderNum = 0;
   // }
@@ -896,15 +896,15 @@ function render() {
   var parent = document.createElement("div");
   parent.classList.add("hintcontainer");
 
-  //createHintButtonŠÖ”‚ÉˆÈ‰º‚Ì‚R‚Â‚Ìî•ñ‚ğ“Š‚°‚ÄAappendChild‚³‚¹‚é
+  //createHintButtoné–¢æ•°ã«ä»¥ä¸‹ã®ï¼“ã¤ã®æƒ…å ±ã‚’æŠ•ã’ã¦ã€appendChildã•ã›ã‚‹
   createHintButton("button1", 0, parent);
   createHintButton("button2", 1, parent);
   createHintButton("button3", 2, parent);
 
-  //‚»‚Ì‘¼ƒ{ƒ^ƒ“‚Ìì¬
+  //ãã®ä»–ãƒœã‚¿ãƒ³ã®ä½œæˆ
   var next = document.createElement("button");
   next.classList.add("next");
-  next.textContent = "‚»‚Ì‘¼";
+  next.textContent = "ãã®ä»–";
   next.onclick = render;
   parent.appendChild(next);
 
@@ -914,10 +914,10 @@ var nullNum = 0;
 function createHintButton(className, num, parent) {
   var button = document.createElement("button");
   button.classList.add(className);
-  //addeventlistner‚ğ’Ç‰Á
+  //addeventlistnerã‚’è¿½åŠ 
   console.log(button);
   button.addEventListener("click", function() {
-    console.log("addEventListener‚ªŒÄ‚Î‚ê‚½");
+    console.log("addEventListenerãŒå‘¼ã°ã‚ŒãŸ");
     first(num);
   });
   parent.appendChild(button);
@@ -928,7 +928,7 @@ function createHintButton(className, num, parent) {
     nullNum++;
     if (nullNum == 1) {
       var countup = function() {
-        // alert("‹Ù‹}");
+        // alert("ç·Šæ€¥");
         // renderNum = 1;
         offset = -3;
         offsetplus = 0;
@@ -943,7 +943,7 @@ function createHintButton(className, num, parent) {
   console.log(hints[2]);
 }
 
-//Œˆ’è‚³‚ê‚½ƒR[ƒh‚ğ‚¿‚á‚ñ‚Æ‚µ‚½ƒR[ƒh‚É•ÏX‚·‚éŠÖ”
+//æ±ºå®šã•ã‚ŒãŸã‚³ãƒ¼ãƒ‰ã‚’ã¡ã‚ƒã‚“ã¨ã—ãŸã‚³ãƒ¼ãƒ‰ã«å¤‰æ›´ã™ã‚‹é–¢æ•°
 function convertHintText(hint) {
   if (hint == "href") {
     hint = "href='";
