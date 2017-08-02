@@ -55,7 +55,7 @@ button {
   border: 0.1px solid #e8e8e8;
   cursor: pointer;
 }
-#postformb {
+.postformb {
   position: absolute;
   top: 0px;
   /*left: 900px;*/
@@ -107,5 +107,8 @@ button {
   width: 200px;
 }
 .nextLine {
+  width: 200px;
+}
+.decisionLine {
   width: 200px;
 }
