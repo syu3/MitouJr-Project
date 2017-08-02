@@ -100,6 +100,7 @@ function kaigyo() {
 }
 
 function first(datan) {
+  console.log("first‚ªŒÄ‚Î‚ê‚½");
   // alert("aiueo");
   moreNum = 0;
   num++;
@@ -211,6 +212,12 @@ function first(datan) {
       one.style = "top:1250px;";
       one.textContent = "1";
       hintcontainer.appendChild(one); // hintcontainer(Œó•â‚Ìdiv ) ‚É Button(Œó•â) ‚ð’Ç‰Á
+
+      console.log(one);
+      one.addEventListener("click", function() {
+        console.log("addEventListener‚ªŒÄ‚Î‚ê‚½");
+        first(0);
+      });
 
       var two = document.createElement("button");
       two.className = "button2";
@@ -1017,8 +1024,14 @@ var nullNum = 0;
 function createHintButton(className, num, parent) {
   var button = document.createElement("button");
   button.classList.add(className);
-  button.onclick = "first(" + num + ")";
+  //addeventlistner‚ð’Ç‰Á
+  console.log(button);
+  button.addEventListener("click", function() {
+    console.log("addEventListener‚ªŒÄ‚Î‚ê‚½");
+    first(num);
+  });
   parent.appendChild(button);
+
   var hints = getHints();
   button.textContent = hints[num];
   if (hints[0] == null) {
