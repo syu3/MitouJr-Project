@@ -1037,13 +1037,10 @@ function comment(commentName, num, hints) {
     document.body.appendChild(commentDiv);
   }
 
-  var countup = function() {
-    var commentText = document.createElement("p");
-    commentText.textContent = commentList[hints];
-    commentText.classList.add(commentName);
-    commentDiv.appendChild(commentText);
-  };
-  setTimeout(countup, 10000);
+  var commentText = document.createElement("p");
+  commentText.textContent = commentList[hints];
+  commentText.classList.add(commentName);
+  commentDiv.appendChild(commentText);
 }
 //決定されたコードをちゃんとしたコードに変更する関数
 function convertHintText(hint) {
