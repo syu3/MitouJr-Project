@@ -15,8 +15,6 @@ function codeFTP() {
   str = str.replace(/,/g, "");
   document.write(str);
 
-  console.log(str);
-
   // document.querySelector(".code").value = str;
   // }else{
   //  document.querySelector(".postform").action="";
@@ -75,7 +73,31 @@ var list = {
   "<p>": ["文字入力", "", ""],
   "<font": ["size", "color", ""],
   size: ["3", "5", "10"],
-  "1": ["ok", "です", "さすが"]
+  "1": ["<center>", "<p>", "<img"]
+};
+
+var commentList = {
+  "<center>": ["中央に配置"],
+  href: ["表示するサイトのURL"],
+  ">": ["閉じる"],
+  "<hr": ["線を描く"],
+  width: ["横幅を指定"],
+  "<img": ["画像を表示"],
+  src: ["画像を指定"],
+  "<p>": ["文字を表示"],
+  "<font": ["文字の設定を変える"],
+  size: ["文字サイズを指定"],
+  color: ["文字の色を指定"],
+  id: ["その部品の名前を指定"],
+  "": [""],
+  "": [""],
+  "": [""],
+  "": [""],
+  "": [""],
+  "": [""],
+  "": [""],
+  "": [""],
+  "": [""]
 };
 
 function kaigyo() {
@@ -86,7 +108,6 @@ function kaigyo() {
   // str = str.replace( />/g , ">" ) ;
   // str = str.replace( /,/g , "" ) ;
   //
-  // console.log(str);
   kurikaesi = 0;
   decisionLineleft++;
   loopKetteiNum++;
@@ -101,7 +122,6 @@ function kaigyo() {
 }
 
 function first(datan) {
-  console.log("firstが呼ばれた");
   // alert("aiueo");
   moreNum = 0;
   num++;
@@ -163,7 +183,6 @@ function first(datan) {
     // );
   }
   // var x = document.getElementsByClassName("firstb");
-  console.log("numの値は", num);
   if (num == 1) {
     ketteinum++;
 
@@ -215,7 +234,6 @@ function first(datan) {
       hintcontainer.appendChild(one); // hintcontainer(候補のdiv ) に Button(候補) を追加
 
       one.addEventListener("click", function() {
-        console.log("addEventListenerが呼ばれた");
         first(0);
       });
 
@@ -224,7 +242,6 @@ function first(datan) {
       two.textContent = "2";
       hintcontainer.appendChild(two); // hintcontainer(候補のdiv ) に Button(候補) を追加
       two.addEventListener("click", function() {
-        console.log("addEventListenerが呼ばれた");
         first(1);
       });
 
@@ -233,7 +250,6 @@ function first(datan) {
       three.textContent = "3";
       hintcontainer.appendChild(three); // hintcontainer(候補のdiv ) に Button(候補) を追加
       three.addEventListener("click", function() {
-        console.log("addEventListenerが呼ばれた");
         first(2);
       });
 
@@ -242,7 +258,6 @@ function first(datan) {
       four.textContent = "4";
       hintcontainer.appendChild(four); // hintcontainer(候補のdiv ) に Button(候補) を追加
       four.addEventListener("click", function() {
-        console.log("addEventListenerが呼ばれた");
         render();
       });
 
@@ -250,7 +265,6 @@ function first(datan) {
       // objBody.appendChild(element);
       // body要素にdivエレメントを追加;
     } else {
-      alert("GoodAlert");
       if (kakkonum == 0) {
         var left = ketteinum * 200;
         // var newleft = left - 51;
@@ -377,20 +391,18 @@ function first(datan) {
         decisionDiv.className = "decisionDiv";
         document.body.appendChild(decisionDiv);
       }
-
       var decisionLine = document.createElement("img"); //決定したボタンを繋げる線
       decisionLine.src = "sentwo.png";
-      decisionLine.className = "decisionLine";
+      decisionLine.className = "decisionLine" + ketteinum + " decisionLine";
       decisionDiv.appendChild(decisionLine);
 
       var decisionButton = document.createElement("button"); //決定したボタン
       decisionButton.className = "decisionButton" + ketteinum + "";
       decisionButton.style = "margin-top:400px;";
-      decisionDiv.appendChild(decisionButton);
-      console.log(decisionButton);
       decisionButton.addEventListener("click", function() {
         first();
       });
+      decisionDiv.appendChild(decisionButton);
 
       // document.write(
       //   "<button type='button' id='kettei" +
@@ -426,7 +438,9 @@ function first(datan) {
     }
 
     if (ketteinum == 2) {
-      var element = document.querySelector(".decisionLine" + ketteinum + "");
+      var ddd = ketteinum - 1;
+      var element = document.querySelector(".decisionLine" + ddd + "");
+      console.log(".decisionLine" + ddd + "");
       var rect = element.getBoundingClientRect();
       var positionX = rect.left + window.pageXOffset; // ?v?f??X???W
       var positionY = rect.top + window.pageYOffset; // ?v?f??Y???W
@@ -576,11 +590,9 @@ function first(datan) {
     } else if (datan == 1) {
       var element = document.querySelector(".button2");
       result1234 = document.querySelector(".button2").innerHTML;
-      console.log(result1234);
 
       // var dadada = ketteinum - 1;
       var elem = document.querySelector(".decisionButton" + ketteinum + "");
-      console.log("decisionButton" + ketteinum + "," + result1234 + "");
       elem.innerHTML = result1234;
 
       data = document.querySelector(".button2").innerHTML;
@@ -610,7 +622,6 @@ function first(datan) {
       var text = convertHintText(hint);
 
       array.push(text);
-      console.log(array); // ['a', 'b', 'c']
     }
 
     // var element = document.querySelector(".button1");
@@ -623,7 +634,6 @@ function first(datan) {
       // str = str.replace( />/g , ">" ) ;
       // str = str.replace( /,/g , "" ) ;
       //
-      // console.log(str);
       // if(ketteinum == 1){
       //   var elem = document.querySelector(".decisionButton");
       //   elem.innerHTML = str;
@@ -651,7 +661,7 @@ function first(datan) {
 
 function nextcode() {
   //候補を表示する
-  alert("aiueo");
+  // alert("aiueo");
   if (num == 1) {
     // document.querySelector(".button1").style.display = "block";
     // document.querySelector(".button2").style.display = "block";
@@ -678,9 +688,6 @@ function nextcode() {
       // current = document.querySelector()にする。。。。
 
       // alert(result);
-      console.log(result);
-      console.log(".decisionButton" + minusoneKN + "");
-      console.log(list[result]);
 
       // var elem = document.querySelector(".decisionButton"+ketteinum+"");
       // elem.innerHTML = result;
@@ -851,7 +858,6 @@ function nextcode() {
 
 function preview() {
   //プレビュー
-  // console.log("押された");
 
   str = array.join("");
   str = str.replace(/</g, "<");
@@ -861,9 +867,7 @@ function preview() {
 
   var previewText = document.querySelector(".#preview");
   previewText.srcdoc = str;
-  console.log(previewText.srcdoc);
 
-  // console.log(str);
   //   decisionLineleft ++;
   // loopKetteiNum++;
   // kakkonum = kakkonum + 1;
@@ -873,7 +877,6 @@ function more() {
   getHints();
   // data = document.querySelector(".decisionButton").innerHTML;
   // var ddd = ketteinum - 1;
-  // // console.log(ketteinum);
   // var result = "";
   // if (ddd == 0) {
   // } else if (ddd == 1) {
@@ -881,7 +884,6 @@ function more() {
   //     .querySelector(".decisionButton" + ddd + "")
   //     .innerHTML.replace(/</g, "<");
   // }
-  // console.log(result);
   // moreNum++;
   // var moreNum1 = moreNum * 3;
   //
@@ -890,9 +892,6 @@ function more() {
   // var value2 = keyWordList[moreNum1 - 2];
   // var value3 = keyWordList[moreNum1 - 1];
   //
-  // // console.log(value1); // ['a', 'b', 'c']
-  // // console.log(value2); // ['a', 'b', 'c']
-  // // console.log(value3); // ['a', 'b', 'c']
   // if (value1 == null && value2 == null && value3 == null) {
   //   moreNum = 1;
   //   var moreNum1 = moreNum * 3;
@@ -942,9 +941,7 @@ function render() {
 
   //getHints関数のoffsetをここで設定するーー→getHints関数内に書くと、３回呼ばれてしまうから。
   offset = offset + 3;
-  console.log(offset);
   offsetplus = offset + 3;
-  console.log(offsetplus);
   // if (renderNum == 0) {
   //   alert("eeeee!!!");
   //４つの候補を作る
@@ -976,22 +973,42 @@ function render() {
   });
   parent.appendChild(next);
 
+  //候補を表示する４つに分かれた線
+  var nextLine = document.createElement("img");
+  nextLine.classList.add("nextLine");
+  nextLine.src = "sen.png";
+  parent.appendChild(nextLine);
+
+  //候補を表示する所のバック背景
+  var backGroundColor = document.createElement("img");
+  backGroundColor.classList.add("backGroundColor");
+  backGroundColor.src = "backGroundColor.png";
+  parent.appendChild(backGroundColor);
+
   document.body.appendChild(parent);
 }
 var nullNum = 0;
+
 function createHintButton(className, num, parent) {
   var button = document.createElement("button");
   button.classList.add(className);
   //addeventlistnerを追加
-  console.log(button);
   button.addEventListener("click", function() {
-    console.log("addEventListenerが呼ばれた");
     first(num);
   });
   parent.appendChild(button);
 
   var hints = getHints();
   button.textContent = hints[num];
+  console.log("1");
+  //タグの説明を表示をappendChild
+  var buttonValue = hints[num];
+  var commentName = "commentButton" + num + "";
+  // if (num == 0) {
+  comment(commentName, num, buttonValue);
+  // } else if (num == 1) {
+  // } else {
+  // }
   if (hints[0] == null) {
     nullNum++;
     if (nullNum == 1) {
@@ -1006,11 +1023,29 @@ function createHintButton(className, num, parent) {
       setTimeout(countup, 10);
     }
   }
-  console.log(hints[0]);
-  console.log(hints[1]);
-  console.log(hints[2]);
 }
 
+//そのコードが何のコードかを表示
+function comment(commentName, num, hints) {
+  console.log("2");
+  // console.log(commentName);
+  // console.log(num);
+  // console.log(hints);
+  if (ketteinum == 2 && num == 0) {
+    alert("adfjaojaofjaoijfdeiojfaoiefjiojfaiofaojfojfeahfoae;fa");
+    var commentDiv = document.createElement("div");
+    commentDiv.className = "commentDiv";
+    document.body.appendChild(commentDiv);
+  }
+
+  var countup = function() {
+    var commentButton = document.createElement("button");
+    commentButton.textContent = commentList[hints];
+    commentButton.classList.add(commentName);
+    commentDiv.appendChild(commentButton);
+  };
+  setTimeout(countup, 10000);
+}
 //決定されたコードをちゃんとしたコードに変更する関数
 function convertHintText(hint) {
   if (hint == "href") {
