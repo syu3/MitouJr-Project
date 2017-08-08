@@ -1003,7 +1003,7 @@ function createHintButton(className, num, parent) {
   console.log("1");
   //タグの説明を表示をappendChild
   var buttonValue = hints[num];
-  var commentName = "commentButton" + num + "";
+  var commentName = "commentText" + num + "";
   // if (num == 0) {
   comment(commentName, num, buttonValue);
   // } else if (num == 1) {
@@ -1031,18 +1031,17 @@ function comment(commentName, num, hints) {
   // console.log(commentName);
   // console.log(num);
   // console.log(hints);
-  if (ketteinum == 2 && num == 0) {
-    alert("adfjaojaofjaoijfdeiojfaoiefjiojfaiofaojfojfeahfoae;fa");
+  if (num == 0) {
     var commentDiv = document.createElement("div");
     commentDiv.className = "commentDiv";
     document.body.appendChild(commentDiv);
   }
 
   var countup = function() {
-    var commentButton = document.createElement("button");
-    commentButton.textContent = commentList[hints];
-    commentButton.classList.add(commentName);
-    commentDiv.appendChild(commentButton);
+    var commentText = document.createElement("p");
+    commentText.textContent = commentList[hints];
+    commentText.classList.add(commentName);
+    commentDiv.appendChild(commentText);
   };
   setTimeout(countup, 10000);
 }
