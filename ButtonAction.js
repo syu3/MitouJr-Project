@@ -212,6 +212,77 @@ function first(datan) {
       //????
       // document.write("<img src='sen.png' id='decisionLine' style='position:absolute; top:250px;  left:150px; width:150px; height:50px;'>");
 
+      var hintDiv1 = document.createElement("div");
+      hintDiv1.className = "hintDiv1";
+      document.body.appendChild(hintDiv1); //１番目の候補
+
+      var oneButton = document.createElement("button");
+      oneButton.className = "button1";
+      oneButton.style = "position:absolute;";
+      oneButton.style = "top:1250px;";
+      oneButton.textContent = "1";
+      hintDiv1.appendChild(oneButton); // hintcontainer(候補のdiv ) に Button(候補) を追加
+      oneButton.addEventListener("click", function() {
+        first(0);
+      });
+
+      var oneText = document.createElement("p");
+      oneText.classList.add("text1");
+      oneText.textContent = "1の説明";
+      hintDiv1.appendChild(oneText);
+      //-----------------------------------------------------------------------------------------------------------
+      var hintDiv2 = document.createElement("div");
+      hintDiv2.className = "hintDiv2";
+      document.body.appendChild(hintDiv2); //１番目の候補
+
+      var twoButton = document.createElement("button");
+      twoButton.className = "button2";
+      twoButton.style = "position:absolute;";
+      twoButton.style = "top:1250px;";
+      twoButton.textContent = "2";
+      hintDiv2.appendChild(twoButton); // hintcontainer(候補のdiv ) に Button(候補) を追加
+      twoButton.addEventListener("click", function() {
+        first(1);
+      });
+
+      var twoText = document.createElement("p");
+      twoText.classList.add("text2");
+      twoText.textContent = "2の説明";
+      hintDiv2.appendChild(twoText);
+      //-----------------------------------------------------------------------------------------------------------
+      var hintDiv3 = document.createElement("div");
+      hintDiv3.className = "hintDiv3";
+      document.body.appendChild(hintDiv3); //１番目の候補
+
+      var threeButton = document.createElement("button");
+      threeButton.className = "button3";
+      threeButton.style = "position:absolute;";
+      threeButton.style = "top:1250px;";
+      threeButton.textContent = "3";
+      hintDiv3.appendChild(threeButton); // hintcontainer(候補のdiv ) に Button(候補) を追加
+      threeButton.addEventListener("click", function() {
+        first(2);
+      });
+
+      var threeText = document.createElement("p");
+      threeText.classList.add("text3");
+      threeText.textContent = "3の説明";
+      hintDiv3.appendChild(threeText);
+      //-----------------------------------------------------------------------------------------------------------
+      var hintDiv4 = document.createElement("div");
+      hintDiv4.className = "hintDiv4";
+      document.body.appendChild(hintDiv4); //１番目の候補
+
+      var four = document.createElement("button");
+      four.className = "next";
+      four.textContent = "4";
+      hintDiv4.appendChild(four); // hintcontainer(候補のdiv ) に Button(候補) を追加
+      four.addEventListener("click", function() {
+        render();
+      });
+
+      //-----------------------------------------------------------------------------------------------------------
+
       var hintcontainer = document.createElement("div");
       hintcontainer.className = "hintcontainer";
       document.body.appendChild(hintcontainer); //候補div
@@ -225,41 +296,6 @@ function first(datan) {
       backGroundColor.className = "backGroundColor";
       backGroundColor.src = "backGroundColor.png";
       hintcontainer.appendChild(backGroundColor); //候補を表示するところの背景
-
-      var one = document.createElement("button");
-      one.className = "button1";
-      one.style = "position:absolute;";
-      one.style = "top:1250px;";
-      one.textContent = "1";
-      hintcontainer.appendChild(one); // hintcontainer(候補のdiv ) に Button(候補) を追加
-
-      one.addEventListener("click", function() {
-        first(0);
-      });
-
-      var two = document.createElement("button");
-      two.className = "button2";
-      two.textContent = "2";
-      hintcontainer.appendChild(two); // hintcontainer(候補のdiv ) に Button(候補) を追加
-      two.addEventListener("click", function() {
-        first(1);
-      });
-
-      var three = document.createElement("button");
-      three.className = "button3";
-      three.textContent = "3";
-      hintcontainer.appendChild(three); // hintcontainer(候補のdiv ) に Button(候補) を追加
-      three.addEventListener("click", function() {
-        first(2);
-      });
-
-      var four = document.createElement("button");
-      four.className = "next";
-      four.textContent = "4";
-      hintcontainer.appendChild(four); // hintcontainer(候補のdiv ) に Button(候補) を追加
-      four.addEventListener("click", function() {
-        render();
-      });
 
       // var objBody = document.getElementsByTagName("body").item(0);
       // objBody.appendChild(element);
@@ -946,10 +982,18 @@ function render() {
   //   alert("eeeee!!!");
   //４つの候補を作る
   if (offset != 3) {
+    var hintDiv1 = document.querySelector(".hintDiv1");
+    var hintDiv2 = document.querySelector(".hintDiv2");
+    var hintDiv3 = document.querySelector(".hintDiv3");
+    var hintDiv4 = document.querySelector(".hintDiv4");
     var container = document.querySelector(".hintcontainer");
   }
   //bodyの中にあるhintcontainerを削除する
   // if (container != null) {
+  document.body.removeChild(hintDiv1); //４つの候補を表示するDivを作る
+  document.body.removeChild(hintDiv2); //４つの候補を表示するDivを作る
+  document.body.removeChild(hintDiv3); //４つの候補を表示するDivを作る
+  document.body.removeChild(hintDiv4); //４つの候補を表示するDivを作る
   document.body.removeChild(container); //４つの候補を表示するDivを作る
   // } else {
   //   renderNum = 0;
