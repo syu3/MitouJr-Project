@@ -816,17 +816,13 @@ function nextcode() {
   // }
 }
 
-function preview() {
+function preview(previewDiv) {
   console.log(document.querySelector(".testDiv"));
   //プレビュー
   console.log(previewArray);
   var previewText = previewArray.join(",");
   previewText = previewText.replace(/,/g, " ");
   console.log(previewText);
-
-  var previewDiv = document.createElement("div");
-  previewDiv.classList.add("previewDiv");
-  document.body.appendChild(previewDiv);
 
   var previewIframe = document.createElement("iframe");
   previewIframe.classList.add("previewIframe");
@@ -1023,6 +1019,19 @@ function createHintButton(className, num, parent) {
     previewArray.push(convertHintText(hints[num]));
     console.log(previewArray);
     render();
+    //プレビューを追加
+    if (document.querySelector(".previewDiv") == null) {
+      var previewDiv = document.createElement("div");
+      previewDiv.classList.add("previewDiv");
+      document.body.appendChild(previewDiv);
+      var previewButton = document.createElement("button");
+      previewButton.classList.add("previewButton");
+      previewButton.textContent = "プレビュー";
+      previewDiv.appendChild(previewButton);
+      previewButton.addEventListener("click", function() {
+        preview(previewDiv);
+      });
+    }
   });
 
   button.textContent = hints[num];
