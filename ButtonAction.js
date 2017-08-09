@@ -14,12 +14,6 @@ function codeFTP() {
   str = str.replace(/>/g, ">");
   str = str.replace(/,/g, "");
   document.write(str);
-
-  // document.querySelector(".code").value = str;
-  // }else{
-  //  document.querySelector(".postform").action="";
-  //
-  // }
 }
 // document.write("<canvas id='nextLine' width='1000px;' height='1000px;'></canvas>");
 //
@@ -47,7 +41,6 @@ var ketteinum = 0;
 var ketteinum1 = 0;
 var num = 0;
 var n = 0;
-var data = "";
 var result = "";
 var loopKetteiNum = 1;
 var kurikaesi = 0;
@@ -58,7 +51,7 @@ var moreNum = 0;
 var current = "";
 var list = {
   "<center>": ["<\u002fcenter>", "</p>", "<a>", "<li>", "<p>", "<button"],
-  文字入力: ["href", "id", ">", "その他"],
+  文字入力: ["href", "id", ">", "</p>"],
   href: ["index.html", "test.html", ""],
   "index.html": [">", "</h1>", "<br>", "</p>"],
   ">": ["ホーム", "自己紹介", ""],
@@ -74,7 +67,8 @@ var list = {
   "<font": ["size", "color", ""],
   size: ["3", "5", "10"],
   "1": ["<center>", "<p>", "<img"],
-  HTML: ["<center>", "</p>", "<a>", "<li>", "<button"]
+  HTML: ["<center>", "</p>", "<a>", "<li>", "<button"],
+  "": ["<center>", "<p>", "<a>"]
 };
 
 var commentList = {
@@ -124,6 +118,7 @@ function kaigyo() {
 
 function first(datan) {
   // alert("aiueo");
+  selected = "";
   moreNum = 0;
   num++;
   var link = document.createElement("link");
@@ -186,10 +181,10 @@ function first(datan) {
   // var x = document.getElementsByClassName("firstb");
   if (num == 1) {
     ketteinum++;
+    render(); //一番最初の候補をrender()で自動で作成するため
 
     if (ketteinum == 1) {
       // document.querySelector(".first").onclick = new Function("");
-
       // document.write(
       //   "<img src='backGroundColor.png' id='backGroundColor' style='position:absolute; top:140px;  left:158px; width:200px; height:370px; z-index:1;'>"
       // );
@@ -209,59 +204,56 @@ function first(datan) {
       // document.write(
       //   "<button type='button' id='next' onClick='more()' style='position:absolute; top:450px;  left:200px; width:150px; height:50px; z-index:5;'>もっと見る</button></div>"
       // );
-
       //????
       // document.write("<img src='sen.png' id='decisionLine' style='position:absolute; top:250px;  left:150px; width:150px; height:50px;'>");
-
-      var hintcontainer = document.createElement("div");
-      hintcontainer.className = "hintcontainer";
-      document.body.appendChild(hintcontainer); //候補div
-
-      var nextLine = document.createElement("img");
-      nextLine.className = "nextLine";
-      nextLine.src = "sen.png";
-      hintcontainer.appendChild(nextLine); //候補を表示するための線
-
-      var backGroundColor = document.createElement("img");
-      backGroundColor.className = "backGroundColor";
-      backGroundColor.src = "backGroundColor.png";
-      hintcontainer.appendChild(backGroundColor); //候補を表示するところの背景
-
-      var one = document.createElement("button");
-      one.className = "button1";
-      one.style = "position:absolute;";
-      one.style = "top:1250px;";
-      one.textContent = "HTML";
-      hintcontainer.appendChild(one); // hintcontainer(候補のdiv ) に Button(候補) を追加
-
-      one.addEventListener("click", function() {
-        first(0);
-      });
-
-      var two = document.createElement("button");
-      two.className = "button2";
-      two.textContent = "2";
-      hintcontainer.appendChild(two); // hintcontainer(候補のdiv ) に Button(候補) を追加
-      two.addEventListener("click", function() {
-        first(1);
-      });
-
-      var three = document.createElement("button");
-      three.className = "button3";
-      three.textContent = "3";
-      hintcontainer.appendChild(three); // hintcontainer(候補のdiv ) に Button(候補) を追加
-      three.addEventListener("click", function() {
-        first(2);
-      });
-
-      var four = document.createElement("button");
-      four.className = "next";
-      four.textContent = "4";
-      hintcontainer.appendChild(four); // hintcontainer(候補のdiv ) に Button(候補) を追加
-      four.addEventListener("click", function() {
-        render();
-      });
-
+      // var hintcontainer = document.createElement("div");
+      // hintcontainer.className = "hintcontainer";
+      // document.body.appendChild(hintcontainer); //候補div
+      //
+      // var nextLine = document.createElement("img");
+      // nextLine.className = "nextLine";
+      // nextLine.src = "sen.png";
+      // hintcontainer.appendChild(nextLine); //候補を表示するための線
+      //
+      // var backGroundColor = document.createElement("img");
+      // backGroundColor.className = "backGroundColor";
+      // backGroundColor.src = "backGroundColor.png";
+      // hintcontainer.appendChild(backGroundColor); //候補を表示するところの背景
+      //
+      // var one = document.createElement("button");
+      // one.className = "button1";
+      // one.style = "position:absolute;";
+      // one.style = "top:1250px;";
+      // one.textContent = "HTML";
+      // hintcontainer.appendChild(one); // hintcontainer(候補のdiv ) に Button(候補) を追加
+      //
+      // one.addEventListener("click", function() {
+      //   first(0);
+      // });
+      //
+      // var two = document.createElement("button");
+      // two.className = "button2";
+      // two.textContent = "2";
+      // hintcontainer.appendChild(two); // hintcontainer(候補のdiv ) に Button(候補) を追加
+      // two.addEventListener("click", function() {
+      //   first(1);
+      // });
+      //
+      // var three = document.createElement("button");
+      // three.className = "button3";
+      // three.textContent = "3";
+      // hintcontainer.appendChild(three); // hintcontainer(候補のdiv ) に Button(候補) を追加
+      // three.addEventListener("click", function() {
+      //   first(2);
+      // });
+      //
+      // var four = document.createElement("button");
+      // four.className = "next";
+      // four.textContent = "4";
+      // hintcontainer.appendChild(four); // hintcontainer(候補のdiv ) に Button(候補) を追加
+      // four.addEventListener("click", function() {
+      //   render();
+      // });
       // var objBody = document.getElementsByTagName("body").item(0);
       // objBody.appendChild(element);
       // body要素にdivエレメントを追加;
@@ -370,48 +362,18 @@ function first(datan) {
   } else if (num == 2) {
     if (datan == 3) {
     } else {
-      document.querySelector(".button1").style.display = "none";
-      document.querySelector(".button2").style.display = "none";
-      document.querySelector(".button3").style.display = "none";
-      document.querySelector(".next").style.display = "none";
-      document.querySelector(".nextLine").style.display = "none";
-      document.querySelector(".backGroundColor").style.display = "none";
+      // document.querySelector(".button1").style.display = "none";
+      // document.querySelector(".button2").style.display = "none";
+      // document.querySelector(".button3").style.display = "none";
+      // document.querySelector(".next").style.display = "none";
+      // document.querySelector(".nextLine").style.display = "none";
+      // document.querySelector(".backGroundColor").style.display = "none";
       // document.querySelector(".commentText1").style.display = "none";
       // document.querySelector(".commentText2").style.display = "none";
       // document.querySelector(".commentText3").style.display = "none";
     }
 
     num = 0;
-
-    if (datan == 3) {
-    } else {
-      // document.write(
-      //   "<img src='decisionLine.png' id='decisionLine" +
-      //     ketteinum +
-      //     "' style='position:absolute; top:75px;  left:145px; width:70px; height:100px;'>"
-      // );
-
-      var decisionDiv = document.querySelector(".decisionDiv");
-
-      var decisionLine = document.createElement("img"); //決定したボタンを繋げる線
-      decisionLine.src = "sentwo.png";
-      decisionLine.className = "decisionLine" + ketteinum + " decisionLine";
-      decisionDiv.appendChild(decisionLine);
-
-      var decisionButton = document.createElement("button"); //決定したボタン
-      decisionButton.className = "decisionButton" + ketteinum + "";
-      decisionButton.style = "margin-top:400px;";
-      decisionButton.addEventListener("click", function() {
-        first();
-      });
-      decisionDiv.appendChild(decisionButton);
-
-      // document.write(
-      //   "<button type='button' id='kettei" +
-      //     ketteinum +
-      //     "' onClick='render()' style='position:absolute; top:100px;  left:200px; width:150px; height:50px;'><h</button>"
-      // );
-    }
 
     // $("#html").append(
     //   "<button type='button' id='kettei" +
@@ -420,11 +382,11 @@ function first(datan) {
     // );
 
     if (kakkonum == 0) {
-      var left = ketteinum * 200;
-      var element = document.querySelector(".decisionButton" + ketteinum + "");
-      element.style.left = left;
-      document.querySelector(".decisionButton" + ketteinum + "").style.display =
-        "block";
+      // var left = ketteinum * 200;
+      // var element = document.querySelector(".decisionButton" + ketteinum + "");
+      // element.style.left = left;
+      // document.querySelector(".decisionButton" + ketteinum + "").style.display =
+      //   "block";
     } else {
       //   var left = 0;
       //   var kurikaesi1 = kurikaesi - 1;
@@ -440,12 +402,12 @@ function first(datan) {
     }
 
     if (ketteinum == 2) {
-      var ddd = ketteinum - 1;
-      var element = document.querySelector(".decisionLine" + ddd + "");
-      var rect = element.getBoundingClientRect();
-      var positionX = rect.left + window.pageXOffset; // ?v?f??X???W
-      var positionY = rect.top + window.pageYOffset; // ?v?f??Y???W
-      n = 200 * num;
+      // var ddd = ketteinum - 1;
+      // var element = document.querySelector(".decisionLine" + ddd + "");
+      // var rect = element.getBoundingClientRect();
+      // var positionX = rect.left + window.pageXOffset; // ?v?f??X???W
+      // var positionY = rect.top + window.pageYOffset; // ?v?f??Y???W
+      // n = 200 * num;
 
       if (kakkonum == 0) {
         var senleft1 = positionX + 195;
@@ -569,10 +531,10 @@ function first(datan) {
     // var count = 0;
     //   var countup = function(){
     if (datan == 0) {
-      var element = document.querySelector(".button1");
-      result1234 = element.innerHTML.replace(/</g, "<");
-      var elem = document.querySelector(".decisionButton" + ketteinum + "");
-      elem.innerHTML = result1234;
+      // var element = document.querySelector(".button1");
+      // result1234 = element.innerHTML.replace(/</g, "<");
+      // var elem = document.querySelector(".decisionButton" + ketteinum + "");
+      // elem.innerHTML = result1234;
       if (result1234.indexOf("\u002f") != -1) {
         // kurikaesi = 0;
         //               decisionLineleft ++;
@@ -587,42 +549,36 @@ function first(datan) {
         //   document.querySelector(".decisionButton"+ketteinum+"").onclick = new Function( "" );
       }
 
-      data = document.querySelector(".button1").innerHTML;
+      // data = document.querySelector(".button1").innerHTML;
     } else if (datan == 1) {
-      var element = document.querySelector(".button2");
-      result1234 = document.querySelector(".button2").innerHTML;
-
-      // var dadada = ketteinum - 1;
-      var elem = document.querySelector(".decisionButton" + ketteinum + "");
-      elem.innerHTML = result1234;
-
-      data = document.querySelector(".button2").innerHTML;
+      // var element = document.querySelector(".button2");
+      // result1234 = document.querySelector(".button2").innerHTML;
+      //
+      // // var dadada = ketteinum - 1;
+      // var elem = document.querySelector(".decisionButton" + ketteinum + "");
+      // elem.innerHTML = result1234;
+      // data = document.querySelector(".button2").innerHTML;
     } else if (datan == 2) {
-      var element = document.querySelector(".button3");
-      result1234 = document.querySelector(".button3").innerHTML;
-      var elem = document.querySelector(".decisionButton" + ketteinum + "");
-      elem.innerHTML = result1234;
-
-      data = document.querySelector(".button3");
+      // var element = document.querySelector(".button3");
+      // result1234 = document.querySelector(".button3").innerHTML;
+      // var elem = document.querySelector(".decisionButton" + ketteinum + "");
+      // elem.innerHTML = result1234;
+      // data = document.querySelector(".button3");
     } else if (datan == 3) {
-      document.querySelector(".next");
+      // document.querySelector(".next");
     }
     var minusoneKN1 = ketteinum - 1;
 
     if (datan == 3) {
     } else {
-      var hint = document.querySelector(".decisionButton" + ketteinum + "")
-        .innerHTML;
+      // var hint = document.querySelector(".decisionButton" + ketteinum + "")
+      //   .innerHTML;
       // //?f?[?^?o??
       //
-
       // var data2 = data1+ "<"
       // document.write(data1);
       //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-
-      var text = convertHintText(hint);
-
-      array.push(text);
+      // var text = convertHintText(hint);
     }
 
     // var element = document.querySelector(".button1");
@@ -682,9 +638,9 @@ function nextcode() {
       // var element="button2";
       var minusoneKN = ketteinum - 1;
       //?f?[?^???????
-      data = document.querySelector(".decisionButton" + minusoneKN + "")
-        .innerHTML;
-      result = data.replace(/</g, "<");
+      // data = document.querySelector(".decisionButton" + minusoneKN + "")
+      // .innerHTML;
+      // result = data.replace(/</g, "<");
 
       // current = document.querySelector()にする。。。。
 
@@ -839,8 +795,8 @@ function nextcode() {
       //   document.querySelector(".button3").innerHTML = "<h1>";
       //   document.querySelector(".next").innerHTML = "その他";
       // }
-      render();
-      document.querySelector(".next").innerHTML = "その他";
+      // render();
+      // document.querySelector(".next").innerHTML = "その他";
     }
   }
   var center = ["<h1", "<hr", "<h2"];
@@ -919,26 +875,24 @@ function getHints() {
   //その他ボタン
   //４つの候補の中身を変える
   var minusoneKN = ketteinum - 1;
+  console.log(ketteinum);
   // alert(minusoneKN);
-  if (ketteinum != 1) {
-    data = document.querySelector(".decisionButton" + minusoneKN + "")
-      .innerHTML;
-    // alert(data);
 
-    current = data.replace(/</g, "<");
-    current = current.replace(/>/g, ">");
-    // var hitns = list[current].slice(offset, offsetplus);
-    // if (hints[0] != null) {
-    return list[current].slice(offset, offsetplus);
-    // } else {
-    //   offset = 0;
-    //   offsetplus = 3;
-    //   var hints = getHints();
-    // }
-  }
+  // data = document.querySelector(".decisionButton" + ketteinum + "").innerHTML;
+  var data = selected || "";
+  // alert(data);
+
+  // var hitns = list[current].slice(offset, offsetplus);
+  // if (hints[0] != null) {
+  return list[data].slice(offset, offsetplus);
+  // } else {
+  //   offset = 0;
+  //   offsetplus = 3;
+  //   var hints = getHints();
+  // }
 }
 // var renderNum = 0; //render関数が何回呼ばれたか
-
+var selected = null;
 function render() {
   console.log("render関数");
 
@@ -951,13 +905,18 @@ function render() {
   //４つの候補を作る
   // if (offset != 3) {
   var container = document.querySelector(".hintcontainer");
-  document.body.removeChild(container); //４つの候補を表示するDivを消す
-
+  if (container != null) {
+    document.body.removeChild(container); //４つの候補を表示するDivを消す
+  }
   var comment = document.querySelector(".commentDiv");
   if (comment != null) {
     document.body.removeChild(comment); //４つの候補を表示するDivを消す
   }
 
+  var decision = document.querySelector(".decisionDiv");
+  if (decision != null) {
+    document.body.removeChild(decision);
+  }
   // }
   //bodyの中にあるhintcontainerを削除する
   // if (container != null) {
@@ -969,42 +928,71 @@ function render() {
   var parent = document.createElement("div");
   parent.classList.add("hintcontainer");
 
+  var decisionDiv = document.createElement("div");
+  decisionDiv.classList.add("decisionDiv");
+  document.body.appendChild(decisionDiv);
+
+  var decisionLine = document.createElement("img"); //決定したボタンを繋げる線
+  decisionLine.src = "sentwo.png";
+  decisionLine.className = "decisionLine" + ketteinum + " decisionLine";
+  decisionDiv.appendChild(decisionLine);
+  console.log(array);
+  for (var i = 0; i < array.length; i++) {
+    var decisionButton = document.createElement("button"); //決定したボタン
+    decisionButton.className = "decisionButton" + (i + 1) + "";
+    decisionButton.style = "margin-top:400px;";
+    decisionButton.textContent = array[i];
+    var text = array[i];
+    decisionButton.addEventListener("click", function() {
+      if (list[text]) {
+        selected = text;
+      } else {
+        selected = "";
+        offset = 0;
+        offsetplus = 3;
+      }
+      render();
+    });
+    decisionDiv.appendChild(decisionButton);
+  }
   //createHintButton関数に以下の３つの情報を投げて、appendChildさせる
-  createHintButton("button1", 0, parent);
-  createHintButton("button2", 1, parent);
-  createHintButton("button3", 2, parent);
+  if (selected != null) {
+    createHintButton("button1", 0, parent);
+    createHintButton("button2", 1, parent);
+    createHintButton("button3", 2, parent);
 
-  //その他ボタンの作成
-  var next = document.createElement("button");
-  next.classList.add("next");
-  next.textContent = "その他";
-  next.addEventListener("click", function() {
-    offset = offset + 3;
-    offsetplus = offset + 3; //ここを別の場所に移す
-    var hints = getHints();
-    if (hints.length <= 0) {
-      // renderNum = 1;
-      offset = 0;
-      offsetplus = 3;
-      nullNum = 0;
-    }
-    render();
-  });
-  parent.appendChild(next);
+    //その他ボタンの作成
+    var next = document.createElement("button");
+    next.classList.add("next");
+    next.textContent = "その他";
+    next.addEventListener("click", function() {
+      offset = offset + 3;
+      offsetplus = offset + 3; //ここを別の場所に移す
+      var hints = getHints();
+      if (hints.length <= 0) {
+        // renderNum = 1;
+        offset = 0;
+        offsetplus = 3;
+        nullNum = 0;
+      }
+      render();
+    });
+    parent.appendChild(next);
 
-  //候補を表示する４つに分かれた線
-  var nextLine = document.createElement("img");
-  nextLine.classList.add("nextLine");
-  nextLine.src = "sen.png";
-  parent.appendChild(nextLine);
+    //候補を表示する４つに分かれた線
+    var nextLine = document.createElement("img");
+    nextLine.classList.add("nextLine");
+    nextLine.src = "sen.png";
+    parent.appendChild(nextLine);
 
-  //候補を表示する所のバック背景
-  var backGroundColor = document.createElement("img");
-  backGroundColor.classList.add("backGroundColor");
-  backGroundColor.src = "backGroundColor.png";
-  parent.appendChild(backGroundColor);
+    //候補を表示する所のバック背景
+    var backGroundColor = document.createElement("img");
+    backGroundColor.classList.add("backGroundColor");
+    backGroundColor.src = "backGroundColor.png";
+    parent.appendChild(backGroundColor);
 
-  document.body.appendChild(parent);
+    document.body.appendChild(parent);
+  }
 }
 var nullNum = 0;
 
@@ -1022,7 +1010,10 @@ function createHintButton(className, num, parent) {
   button.classList.add(className);
   //addeventlistnerを追加
   button.addEventListener("click", function() {
-    first(num);
+    selected = null;
+    array.push(hints[num]);
+    console.log(array);
+    render();
   });
 
   button.textContent = hints[num];
