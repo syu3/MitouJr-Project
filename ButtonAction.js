@@ -376,6 +376,9 @@ function first(datan) {
       document.querySelector(".next").style.display = "none";
       document.querySelector(".nextLine").style.display = "none";
       document.querySelector(".backGroundColor").style.display = "none";
+      // document.querySelector(".commentText1").style.display = "none";
+      // document.querySelector(".commentText2").style.display = "none";
+      // document.querySelector(".commentText3").style.display = "none";
     }
 
     num = 0;
@@ -387,11 +390,9 @@ function first(datan) {
       //     ketteinum +
       //     "' style='position:absolute; top:75px;  left:145px; width:70px; height:100px;'>"
       // );
-      if (ketteinum == 1) {
-        var decisionDiv = document.createElement("div"); //決定したコードが格納されるDiv
-        decisionDiv.className = "decisionDiv";
-        document.body.appendChild(decisionDiv);
-      }
+
+      var decisionDiv = document.querySelector(".decisionDiv");
+
       var decisionLine = document.createElement("img"); //決定したボタンを繋げる線
       decisionLine.src = "sentwo.png";
       decisionLine.className = "decisionLine" + ketteinum + " decisionLine";
@@ -441,7 +442,6 @@ function first(datan) {
     if (ketteinum == 2) {
       var ddd = ketteinum - 1;
       var element = document.querySelector(".decisionLine" + ddd + "");
-      console.log(".decisionLine" + ddd + "");
       var rect = element.getBoundingClientRect();
       var positionX = rect.left + window.pageXOffset; // ?v?f??X???W
       var positionY = rect.top + window.pageYOffset; // ?v?f??Y???W
@@ -912,8 +912,8 @@ function more() {
   // }
 }
 
-var offset = -3;
-var offsetplus = 0;
+var offset = 0;
+var offsetplus = 3;
 
 function getHints() {
   //その他ボタン
@@ -938,13 +938,9 @@ function getHints() {
   }
 }
 // var renderNum = 0; //render関数が何回呼ばれたか
-var commentDiv = document.createElement("div");
 
 function render() {
-  offset = offset + 3;
-  offsetplus = offset + 3;
-  console.log(offset);
-  console.log(offsetplus);
+  console.log("render関数");
 
   //renderとは、その他ボタンが押された時の挙動
 
@@ -955,7 +951,13 @@ function render() {
   //４つの候補を作る
   // if (offset != 3) {
   var container = document.querySelector(".hintcontainer");
-  document.body.removeChild(container); //４つの候補を表示するDivを作る
+  document.body.removeChild(container); //４つの候補を表示するDivを消す
+
+  var comment = document.querySelector(".commentDiv");
+  if (comment != null) {
+    document.body.removeChild(comment); //４つの候補を表示するDivを消す
+  }
+
   // }
   //bodyの中にあるhintcontainerを削除する
   // if (container != null) {
@@ -967,9 +969,6 @@ function render() {
   var parent = document.createElement("div");
   parent.classList.add("hintcontainer");
 
-  commentDiv.className = "commentDiv";
-  document.body.appendChild(commentDiv);
-
   //createHintButton関数に以下の３つの情報を投げて、appendChildさせる
   createHintButton("button1", 0, parent);
   createHintButton("button2", 1, parent);
@@ -980,6 +979,15 @@ function render() {
   next.classList.add("next");
   next.textContent = "その他";
   next.addEventListener("click", function() {
+    offset = offset + 3;
+    offsetplus = offset + 3; //ここを別の場所に移す
+    var hints = getHints();
+    if (hints.length <= 0) {
+      // renderNum = 1;
+      offset = 0;
+      offsetplus = 3;
+      nullNum = 0;
+    }
     render();
   });
   parent.appendChild(next);
@@ -1001,54 +1009,43 @@ function render() {
 var nullNum = 0;
 
 function createHintButton(className, num, parent) {
+  var hints = getHints();
+  //getHints()で取得した候補の数と、numが同じになったらプログラムをそこで止める
+  if (hints.length <= num) {
+    return;
+  }
+  var plusNum = num + 1;
+  var buttonDiv = document.createElement("div");
+  buttonDiv.classList.add("buttonDiv" + plusNum);
+
   var button = document.createElement("button");
   button.classList.add(className);
   //addeventlistnerを追加
   button.addEventListener("click", function() {
     first(num);
   });
-  parent.appendChild(button);
 
-  var hints = getHints();
   button.textContent = hints[num];
-  console.log(hints[num]);
+  buttonDiv.appendChild(button);
+  parent.appendChild(buttonDiv);
+  console.log(button.parentNode.parentNode);
   //タグの説明を表示をappendChild
   var buttonValue = hints[num];
-  var commentName = "commentText" + num + "";
+  var commentName = "commentText" + (num + 1) + "";
   // if (num == 0) {
-  comment(commentName, num, buttonValue, commentDiv);
+  comment(commentName, num, buttonValue, buttonDiv);
 
   // } else if (num == 1) {
   // } else {
   // }
-  if (hints[0] == null) {
-    nullNum++;
-    if (nullNum == 1) {
-      var countup = function() {
-        // alert("緊急");
-        // renderNum = 1;
-        offset = -3;
-        offsetplus = 0;
-        nullNum = 0;
-        render();
-      };
-      setTimeout(countup, 10);
-    }
-  }
 }
 
 //そのコードが何のコードかを表示
-function comment(commentName, num, hints, commentDiv) {
-  // console.log(commentName);
-  // console.log(num);
-  // console.log(hints);
-  // if (num == 0) {
-  // }
-
-  var commentText = document.createElement("p");
+function comment(commentName, num, hints, buttonDiv) {
+  var commentText = document.createElement("span");
   commentText.textContent = commentList[hints];
   commentText.classList.add(commentName);
-  commentDiv.appendChild(commentText);
+  buttonDiv.appendChild(commentText);
 }
 //決定されたコードをちゃんとしたコードに変更する関数
 function convertHintText(hint) {
