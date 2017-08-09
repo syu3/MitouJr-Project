@@ -35,12 +35,13 @@ function codeFTP() {
 var result1234 = "";
 var str = "";
 var decisionLineleft = 0;
-var array = [];
 var kakkonum = 0;
 var ketteinum = 0;
 var ketteinum1 = 0;
 var num = 0;
 var n = 0;
+var array = [];
+var previewArray = [];
 var result = "";
 var loopKetteiNum = 1;
 var kurikaesi = 0;
@@ -50,10 +51,10 @@ var Xpositon = 0;
 var moreNum = 0;
 var current = "";
 var list = {
-  "<center>": ["<\u002fcenter>", "</p>", "<a>", "<li>", "<p>", "<button"],
+  "<center>": ["<\u002fcenter>", "</p>", "<a", "<li>", "<p>", "<button"],
   文字入力: ["href", "id", ">", "</p>"],
   href: ["index.html", "test.html", ""],
-  "index.html": [">", "</h1>", "<br>", "</p>"],
+  "index.html": [">", "</h1>", "<br>", "</p>", "</a>"],
   ">": ["ホーム", "自己紹介", ""],
   ホーム: ["</a>", "", ""],
   "test.html": [">", "id", "style"],
@@ -67,8 +68,10 @@ var list = {
   "<font": ["size", "color", ""],
   size: ["3", "5", "10"],
   "1": ["<center>", "<p>", "<img"],
-  HTML: ["<center>", "</p>", "<a>", "<li>", "<button"],
-  "": ["<center>", "<p>", "<a>"]
+  HTML: ["<center>", "</p>", "<a", "<li>", "<button"],
+  "": ["<center>", "<p>", "<a"],
+  "<a": ["href", "", ""]
+  // '':['','',''],
 };
 
 var commentList = {
@@ -85,7 +88,7 @@ var commentList = {
   color: ["文字の色を指定"],
   id: ["その部品の名前を指定"],
   "</p>": ["pタグを終わらせる"],
-  "<a>": ["サイトのURLを表示する"],
+  "<a": ["サイトのURLを表示する"],
   "<li>": ["表を作る"],
   "<button": ["ボタンを作るf"],
   "": [""],
@@ -814,16 +817,21 @@ function nextcode() {
 }
 
 function preview() {
+  console.log(document.querySelector(".testDiv"));
   //プレビュー
+  console.log(previewArray);
+  var previewText = previewArray.join(",");
+  previewText = previewText.replace(/,/g, " ");
+  console.log(previewText);
 
-  str = array.join("");
-  str = str.replace(/</g, "<");
-  str = str.replace(/>/g, ">");
-  str = str.replace(/,/g, "");
-  document.write(str);
+  var previewDiv = document.createElement("div");
+  previewDiv.classList.add("previewDiv");
+  document.body.appendChild(previewDiv);
 
-  var previewText = document.querySelector(".#preview");
-  previewText.srcdoc = str;
+  var previewIframe = document.createElement("iframe");
+  previewIframe.classList.add("previewIframe");
+  previewIframe.srcdoc = previewText;
+  previewDiv.appendChild(previewIframe);
 
   //   decisionLineleft ++;
   // loopKetteiNum++;
@@ -936,7 +944,7 @@ function render() {
   decisionLine.src = "sentwo.png";
   decisionLine.className = "decisionLine" + ketteinum + " decisionLine";
   decisionDiv.appendChild(decisionLine);
-  console.log(array);
+  // console.log(array);
   for (var i = 0; i < array.length; i++) {
     var decisionButton = document.createElement("button"); //決定したボタン
     decisionButton.className = "decisionButton" + (i + 1) + "";
@@ -1012,7 +1020,8 @@ function createHintButton(className, num, parent) {
   button.addEventListener("click", function() {
     selected = null;
     array.push(hints[num]);
-    console.log(array);
+    previewArray.push(convertHintText(hints[num]));
+    console.log(previewArray);
     render();
   });
 
