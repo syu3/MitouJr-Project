@@ -934,6 +934,7 @@ function render() {
 
   var decisionDiv = document.createElement("div");
   decisionDiv.classList.add("decisionDiv");
+  decisionDiv.style = "margin-top:400px;";
   document.body.appendChild(decisionDiv);
 
   var decisionLine = document.createElement("img"); //決定したボタンを繋げる線
@@ -944,7 +945,6 @@ function render() {
   for (var i = 0; i < array.length; i++) {
     var decisionButton = document.createElement("button"); //決定したボタン
     decisionButton.className = "decisionButton" + (i + 1) + "";
-    decisionButton.style = "margin-top:400px;";
     decisionButton.textContent = array[i];
     var text = array[i];
     decisionButton.addEventListener("click", function() {
