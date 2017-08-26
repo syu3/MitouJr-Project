@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  font-family: Lato, "Noto Sans JP", "游ゴシック Medium", "游ゴシック体",
+  font-family: Lato, "Noto Sans JP", "游ゴシ�?ク Medium", "游ゴシ�?ク�?",
     "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN",
-    "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    "メイリオ", Meiryo, "?��?�� ?��ゴシ�?ク", "MS PGothic", sans-serif;
   font-weight: normal;
 }
 button {
@@ -22,7 +22,7 @@ button {
 }
 #serviceName {
   position: absolute;
-  top: -10px;
+  top: 10px;
   left: 20px;
   font-size: 25px;
 }
@@ -111,4 +111,26 @@ button {
 }
 .decisionLine {
   width: 200px;
+}
+.decisionDiv {
+  position: absolute;
+}
+.previewIframe {
+  z-index: 1;
+  background-color: #f9f9f9;
+  position: absolute;
+  left: 10%;
+  /*margin: 0 auto;*/
+  width: 80%;
+  height: 80%;
+}
+.previewCloseButton {
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 10%;
+}
+.previewCloseButton:hover {
+  cursor: pointer;
 }

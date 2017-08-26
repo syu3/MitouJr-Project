@@ -37,9 +37,11 @@ var str = "";
 var decisionLineleft = 0;
 var kakkonum = 0;
 var ketteinum = 0;
-var ketteinum1 = 0;
+var ketteinum1 = -1;
 var num = 0;
 var n = 0;
+var aa = 0;
+var kaigyouNum = -1;
 var array = [];
 var previewArray = [];
 var result = "";
@@ -50,27 +52,69 @@ var oneYpositon = 0;
 var Xpositon = 0;
 var moreNum = 0;
 var current = "";
+var previewNum = 0;
+var removePreviewNum = 0;
 var list = {
-  "<center>": ["<\u002fcenter>", "</p>", "<a", "<li>", "<p>", "<button"],
+  "<center>": [
+    "<\u002fcenter>",
+    "</p>",
+    "<a",
+    "<li>",
+    "<p>",
+    "<button",
+    "<h1>"
+  ],
   文字入力: ["href", "id", ">", "</p>"],
   href: ["index.html", "test.html", ""],
   "index.html": [">", "</h1>", "<br>", "</p>", "</a>"],
-  ">": ["ホーム", "自己紹介", ""],
+  ">": ["ホーム", "プロフィール", ""],
   ホーム: ["</a>", "", ""],
   "test.html": [">", "id", "style"],
-  自己紹介: ["</a>", "", ""],
-  "<hr": ["widht", "height", ""],
-  width: ["300px", "400px", "500px", "600px", "100%"],
+  プロフィール: ["</a>", "</h1>", ""],
+  "<hr": ["width", "height", ""],
+  width: ["300px", "400px", "100%"],
   "<img": ["src", "id", "alt"],
   src: ["url.jpg", "", ""],
   "url.jpg": [">", "", ""],
-  "<p>": ["文字入力", "", ""],
+  "<p>": ["〇〇のサイトです。", "サイトを始めて1日です。", "プロフィールも見てください。"],
   "<font": ["size", "color", ""],
   size: ["3", "5", "10"],
   "1": ["<center>", "<p>", "<img"],
   HTML: ["<center>", "</p>", "<a", "<li>", "<button"],
-  "": ["<center>", "<p>", "<a"],
-  "<a": ["href", "", ""]
+  "": [
+    "<center>",
+    "<p>",
+    "<a",
+    "<hr",
+    "<button",
+    "<h1>",
+    "<br>",
+    "プロフィールも見てください。",
+    "<img"
+  ],
+  "<a": ["href", "", ""],
+  "</p>": ["</center>", "", ""],
+  "<h1>": ["たかとのサイト", "プロフィール", ""],
+  たかとのサイト: ["</h1>", "</p>", ""],
+  "300px": [">", "", ""],
+  "400px": [">", "", ""],
+  "100%": [">", "", ""],
+  "〇〇のサイトです。": ["<br>", "</p>", ""],
+  "サイトを始めて1日です。": ["<br>", "</p>", ""],
+  "プロフィールも見てください。": ["<br>", "</p>", ""],
+  "<br>": ["</p>", "サイトを初めて1日です。", "プロフィールも見てください。"]
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
+  // '':['','',''],
   // '':['','',''],
 };
 
@@ -91,25 +135,78 @@ var commentList = {
   "<a": ["サイトのURLを表示する"],
   "<li>": ["表を作る"],
   "<button": ["ボタンを作るf"],
+  "<h1>": ["サイトの題名"],
+  "index.html": ["サイトの１番目のページ"],
+  "test.html": ["プロフィールのページ"],
+  "<br>": ["改行する"],
+  "<img": ["画像を表示する"],
+  "": [""],
+  "": [""],
+  "": [""],
+  "": [""],
   "": [""],
   "": [""],
   "": [""],
   "": [""],
   "": [""]
 };
+//preview以外がクリックされたら
+$(document).on("click touchend", function(event) {
+  console.log("preview以外がクリックされたら");
+  var previewIframe = document.querySelector(".previewIframe");
+  var previewCloseButton = document.querySelector(".previewCloseButton");
+  if (previewIframe != null) {
+    removePreviewNum++;
+
+    if (!$(event.target).closest(".previewIframe").length) {
+      var previewDiv = document.querySelector(".previewDiv");
+      console.log(previewDiv.className);
+      console.log(previewIframe);
+      if (removePreviewNum != 1) {
+        previewDiv.removeChild(previewIframe);
+        previewDiv.removeChild(previewCloseButton);
+        removePreviewNum = 0;
+      }
+    } else {
+    }
+  }
+});
 
 function kaigyo() {
-  document.querySelector(".first").onclick = new Function("first()");
-
   // str = array.join(',');
   // str = str.replace( /</g , "<" ) ;
   // str = str.replace( />/g , ">" ) ;
   // str = str.replace( /,/g , "" ) ;
   //
-  kurikaesi = 0;
-  decisionLineleft++;
-  loopKetteiNum++;
-  kakkonum = kakkonum + 1;
+  kaigyouNum++;
+
+  // var codeFirstValue = document.querySelector(
+  //   ".decisionButton" + (aa + (ketteinum1 - (ketteinum1 - 1)))
+  // );
+  // console.log(codeFirstValue);
+  // aa = ketteinum1 + 2;
+
+  // console.log(commentList[codeFirstValue.textContent]);
+  // var decisionCommentDiv = document.createElement("div");
+  // decisionCommentDiv.classList.add("decisionComment");
+  // document.body.appendChild(decisionCommentDiv);
+  // var decisionDiv = document.querySelector(".decisionDiv");
+  // var decisionButtonComment = document.createElement("p");
+  // decisionButtonComment.classList.add("decisionButtonComment");
+  // decisionButtonComment.textContent = commentList[codeFirstValue.textContent];
+  // decisionDiv.appendChild(decisionButtonComment);
+  // console.log(decisionDiv);
+  // var decisionDiv = document.querySelector(".decisionDiv");
+
+  ketteinum1 = -1;
+
+  selected = null;
+  offset = 0;
+  offsetplus = 3;
+  // kurikaesi = 0;
+  // decisionLineleft++;
+  // loopKetteiNum++;
+  // kakkonum = kakkonum + 1;
   // document.querySelector(".button1").style.display="none";
   // document.querySelector(".button2").style.display="none";
   // document.querySelector(".button3").style.display="none";
@@ -117,13 +214,20 @@ function kaigyo() {
   //   document.querySelector(".nextLine").style.display="none";
   //   document.querySelector(".backGroundColor"+ketteinum+"").style.display="none";
   //   document.querySelector(".decisionButton"+ketteinum+"").onclick = new Function( "" );
+  var decision = {
+    type: "br",
+    text: ""
+  };
+  array.push(decision);
+  render();
 }
 
 function first(datan) {
-  // alert("aiueo");
   selected = "";
   moreNum = 0;
   num++;
+  render(); //一番最初の候補をrender()で自動で作成するため
+
   var link = document.createElement("link");
   link.href = "style.css";
   link.rel = "stylesheet";
@@ -184,7 +288,6 @@ function first(datan) {
   // var x = document.getElementsByClassName("firstb");
   if (num == 1) {
     ketteinum++;
-    render(); //一番最初の候補をrender()で自動で作成するため
 
     if (ketteinum == 1) {
       // document.querySelector(".first").onclick = new Function("");
@@ -262,36 +365,35 @@ function first(datan) {
       // body要素にdivエレメントを追加;
     } else {
       if (kakkonum == 0) {
-        var left = ketteinum * 200;
+        // var left = ketteinum * 200;
         // var newleft = left - 51;
         // document.write("<img src='backGroundColor.png' id='backGroundColor"+ketteinum+"' style='position:absolute; top:140px;  left:"+newleft+"px; width:200px; height:370px;'>");
-
-        var element = document.querySelector(".button1");
-        element.style.display = "block";
-        element.style.left = left;
-
-        var element1 = document.querySelector(".button2");
-        element1.style.display = "block";
-        element1.style.left = left;
-
-        var element2 = document.querySelector(".button3");
-        element2.style.display = "block";
-        element2.style.left = left;
-
-        var element3 = document.querySelector(".next");
-        element3.style.display = "block";
-        element3.style.left = left;
-
-        var element4 = document.querySelector(".nextLine");
-        var senleft = left - 105;
-        element4.style.display = "block";
-        element4.style.left = senleft;
-
-        // document.querySelector(".backGroundColor").style.display="block";
-        var element5 = document.querySelector(".backGroundColor");
-        var senleftA = left - 51;
-        element5.style.display = "block";
-        element5.style.left = senleftA;
+        // var element = document.querySelector(".button1");
+        // element.style.display = "block";
+        // element.style.left = left;
+        //
+        // var element1 = document.querySelector(".button2");
+        // element1.style.display = "block";
+        // element1.style.left = left;
+        //
+        // var element2 = document.querySelector(".button3");
+        // element2.style.display = "block";
+        // element2.style.left = left;
+        //
+        // var element3 = document.querySelector(".next");
+        // element3.style.display = "block";
+        // element3.style.left = left;
+        //
+        // var element4 = document.querySelector(".nextLine");
+        // var senleft = left - 105;
+        // element4.style.display = "block";
+        // element4.style.left = senleft;
+        //
+        // // document.querySelector(".backGroundColor").style.display="block";
+        // var element5 = document.querySelector(".backGroundColor");
+        // var senleftA = left - 51;
+        // element5.style.display = "block";
+        // element5.style.left = senleftA;
       } else {
         var left1 = 0;
         ketteinum1 = ketteinum1 + 1; //その他その他???????
@@ -464,7 +566,6 @@ function first(datan) {
             positionX = positionX + 135;
             element.style.left = positionX;
             element.style.top = loopKetteiNum * 132.5;
-            // alert("haihai");
 
             var element = document.querySelector(
               ".decisionLine" + ketteinum + ""
@@ -506,7 +607,6 @@ function first(datan) {
             positionX = positionX + 135;
             element.style.left = positionX;
             element.style.top = loopKetteiNum * 232.5;
-            // alert("haihai");
 
             //     var senleft1 = ketteinum1 * 145;//kettei??{?^その他その他@?@?@??????top??????
             //     var element1 = document.querySelector(".decisionLine"+ketteinum+"");
@@ -621,7 +721,6 @@ function first(datan) {
 
 function nextcode() {
   //候補を表示する
-  // alert("aiueo");
   if (num == 1) {
     // document.querySelector(".button1").style.display = "block";
     // document.querySelector(".button2").style.display = "block";
@@ -646,8 +745,6 @@ function nextcode() {
       // result = data.replace(/</g, "<");
 
       // current = document.querySelector()にする。。。。
-
-      // alert(result);
 
       // var elem = document.querySelector(".decisionButton"+ketteinum+"");
       // elem.innerHTML = result;
@@ -817,17 +914,44 @@ function nextcode() {
 }
 
 function preview(previewDiv) {
-  console.log(document.querySelector(".testDiv"));
-  //プレビュー
-  console.log(previewArray);
-  var previewText = previewArray.join(",");
-  previewText = previewText.replace(/,/g, " ");
-  console.log(previewText);
+  previewNum++;
+  var iframe = document.querySelector(".previewIframe");
+  if (iframe == null) {
+    // console.log(document.querySelector(".testDiv"));
+    //プレビュー
+    // console.log(previewArray);
+    var previewText = previewArray.join(",");
+    previewText = previewText.replace(/,/g, " ");
+    // console.log(previewText);
 
-  var previewIframe = document.createElement("iframe");
-  previewIframe.classList.add("previewIframe");
-  previewIframe.srcdoc = previewText;
-  previewDiv.appendChild(previewIframe);
+    var previewIframe = document.createElement("iframe");
+    previewIframe.classList.add("previewIframe");
+    previewIframe.srcdoc = previewText;
+    previewDiv.appendChild(previewIframe);
+
+    var previewCloseButton = document.createElement("img");
+    previewCloseButton.classList.add("previewCloseButton");
+    previewCloseButton.src = "closeButton.png";
+    previewCloseButton.addEventListener("click", function() {
+      previewDiv.removeChild(previewIframe);
+      previewDiv.removeChild(previewCloseButton);
+      removePreviewNum = 0;
+    });
+    previewDiv.appendChild(previewCloseButton);
+  } else {
+    previewDiv.removeChild(iframe);
+    // console.log(document.querySelector(".testDiv"));
+    //プレビュー
+    // console.log(previewArray);
+    var previewText = previewArray.join(",");
+    previewText = previewText.replace(/,/g, " ");
+    // console.log(previewText);
+
+    var previewIframe = document.createElement("iframe");
+    previewIframe.classList.add("previewIframe");
+    previewIframe.srcdoc = previewText;
+    previewDiv.appendChild(previewIframe);
+  }
 
   //   decisionLineleft ++;
   // loopKetteiNum++;
@@ -879,12 +1003,10 @@ function getHints() {
   //その他ボタン
   //４つの候補の中身を変える
   var minusoneKN = ketteinum - 1;
-  console.log(ketteinum);
-  // alert(minusoneKN);
+  // console.log(ketteinum);
 
   // data = document.querySelector(".decisionButton" + ketteinum + "").innerHTML;
   var data = selected || "";
-  // alert(data);
 
   // var hitns = list[current].slice(offset, offsetplus);
   // if (hints[0] != null) {
@@ -898,14 +1020,15 @@ function getHints() {
 // var renderNum = 0; //render関数が何回呼ばれたか
 var selected = null;
 function render() {
-  console.log("render関数");
+  // console.log(array);
+  // console.log(getHints());
+  // console.log("render関数");
 
   //renderとは、その他ボタンが押された時の挙動
 
   //getHints関数のoffsetをここで設定するーー→getHints関数内に書くと、３回呼ばれてしまうから。
 
   // if (renderNum == 0) {
-  //   alert("eeeee!!!");
   //４つの候補を作る
   // if (offset != 3) {
   var container = document.querySelector(".hintcontainer");
@@ -931,10 +1054,14 @@ function render() {
 
   var parent = document.createElement("div");
   parent.classList.add("hintcontainer");
+  parent.style.position = "absolute";
+  parent.style.top = "100px";
+  parent.style.left = "150px";
+  parent.style.backgroundColor = "#ffffcc";
+  // console.log(parent.style.backGroundColor);
 
   var decisionDiv = document.createElement("div");
   decisionDiv.classList.add("decisionDiv");
-  decisionDiv.style = "margin-top:400px;";
   document.body.appendChild(decisionDiv);
 
   var decisionLine = document.createElement("img"); //決定したボタンを繋げる線
@@ -943,10 +1070,10 @@ function render() {
   decisionDiv.appendChild(decisionLine);
   // console.log(array);
   for (var i = 0; i < array.length; i++) {
-    var decisionButton = document.createElement("button"); //決定したボタン
+    var decisionButton = document.createElement(array[i].type); //決定したボタン
     decisionButton.className = "decisionButton" + (i + 1) + "";
-    decisionButton.textContent = array[i];
-    var text = array[i];
+    decisionButton.textContent = array[i].text;
+    var text = array[i].text;
     decisionButton.addEventListener("click", function() {
       if (list[text]) {
         selected = text;
@@ -982,18 +1109,29 @@ function render() {
       render();
     });
     parent.appendChild(next);
+    console.log("aaaaaa" + kaigyouNum);
 
-    //候補を表示する４つに分かれた線
-    var nextLine = document.createElement("img");
-    nextLine.classList.add("nextLine");
-    nextLine.src = "sen.png";
-    parent.appendChild(nextLine);
+    var kaigyoButton = document.createElement("button");
+    kaigyoButton.classList.add("kaigyoButton");
+    kaigyoButton.textContent = "改行";
+    kaigyoButton.addEventListener("click", kaigyo);
+    parent.appendChild(kaigyoButton);
 
-    //候補を表示する所のバック背景
-    var backGroundColor = document.createElement("img");
-    backGroundColor.classList.add("backGroundColor");
-    backGroundColor.src = "backGroundColor.png";
-    parent.appendChild(backGroundColor);
+    // //候補を表示する４つに分かれた線
+    // var nextLine = document.createElement("img");
+    // nextLine.classList.add("nextLine");
+    // nextLine.src = "sen.png";
+    // parent.appendChild(nextLine);
+
+    // // 候補を表示する所のバック背景
+    // var backGroundColor = document.createElement("img");
+    // backGroundColor.classList.add("backGroundColor");
+    // backGroundColor.src = "backGroundColor.png";
+    // backGroundColor.style.position = "absolute";
+    // backGroundColor.style.top = "0px";
+    // backGroundColor.style.left = "0px";
+    // backGroundColor.style.width = "300px";
+    // parent.appendChild(backGroundColor);
 
     document.body.appendChild(parent);
   }
@@ -1014,12 +1152,18 @@ function createHintButton(className, num, parent) {
   button.classList.add(className);
   //addeventlistnerを追加
   button.addEventListener("click", function() {
+    ketteinum1++;
     selected = null;
-    array.push(hints[num]);
+    var decision = {
+      type: "button",
+      text: hints[num]
+    };
+    array.push(decision);
+
     previewArray.push(convertHintText(hints[num]));
-    console.log(previewArray);
+    // console.log(previewArray);
     render();
-    //プレビューを追加
+    //プレビューDivを追加
     if (document.querySelector(".previewDiv") == null) {
       var previewDiv = document.createElement("div");
       previewDiv.classList.add("previewDiv");
@@ -1037,7 +1181,7 @@ function createHintButton(className, num, parent) {
   button.textContent = hints[num];
   buttonDiv.appendChild(button);
   parent.appendChild(buttonDiv);
-  console.log(button.parentNode.parentNode);
+  // console.log(button.parentNode.parentNode);
   //タグの説明を表示をappendChild
   var buttonValue = hints[num];
   var commentName = "commentText" + (num + 1) + "";
@@ -1066,13 +1210,22 @@ function convertHintText(hint) {
   if (hint == "index.html") {
     hint = "index.html'";
   }
+  if (hint == "test.html") {
+    hint = "test.html'";
+  }
   //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
   if (hint == "width") {
     hint = "width='";
   }
   //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
-  if (hint == "300" && hint == "400" && hint == "500") {
-    hint = hint + "'";
+  if (hint == "300px") {
+    hint = "300px'";
+  }
+  if (hint == "400px") {
+    hint = "400px'";
+  }
+  if (hint == "100%") {
+    hint = "100%'";
   }
   //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
   if (hint.indexOf("<") != -1 && hint.indexOf(">") == -1) {
@@ -1080,7 +1233,7 @@ function convertHintText(hint) {
   }
   //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
   if (hint == "src") {
-    hint = "src=''";
+    hint = "src='";
   }
   //?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[?[
   if (hint == "url.jpg") {
@@ -1110,5 +1263,6 @@ function convertHintText(hint) {
   if (hint == "") {
     hint = "";
   }
+  console.log(hint);
   return hint;
 }
