@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  font-family: Lato, "Noto Sans JP", "游ゴシ�?ク Medium", "游ゴシ�?ク�?",
+  font-family: Lato, "Noto Sans JP", "游ゴシ��?ク Medium", "游ゴシ��?ク��?",
     "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN",
-    "メイリオ", Meiryo, "?��?�� ?��ゴシ�?ク", "MS PGothic", sans-serif;
+    "メイリオ", Meiryo, "?��?�� ?��ゴシ��?ク", "MS PGothic", sans-serif;
   font-weight: normal;
 }
 button {
@@ -22,7 +22,7 @@ button {
 }
 #serviceName {
   position: absolute;
-  top: 10px;
+  top: -15px;
   left: 20px;
   font-size: 25px;
 }
@@ -133,4 +133,31 @@ button {
 }
 .previewCloseButton:hover {
   cursor: pointer;
+}
+
+.tyu-toriaruDiv {
+  width: 100%;
+  height: 100%;
+  background-color: #f1f8ff;
+}
+
+.tt-previewDiv {
+  position: absolute;
+  left: 70%;
+  right: 22%;
+}
+.tt-saveDiv {
+  position: absolute;
+  left: 80%;
+  right: 12%;
+}
+.tt-uploadDiv {
+  position: absolute;
+  left: 90%;
+}
+.tt-startDiv {
+  position: absolute;
+  left: 1%;
+  top: 350px;
+  right: 85%;
 }

@@ -226,7 +226,7 @@ function first(datan) {
   selected = "";
   moreNum = 0;
   num++;
-  render(); //一番最初の候補をrender()で自動で作成するため
+  render(this); //一番最初の候補をrender()で自動で作成するため
 
   var link = document.createElement("link");
   link.href = "style.css";
@@ -1019,7 +1019,7 @@ function getHints() {
 }
 // var renderNum = 0; //render関数が何回呼ばれたか
 var selected = null;
-function render() {
+function render(buttonClass) {
   // console.log(array);
   // console.log(getHints());
   // console.log("render関数");
@@ -1082,15 +1082,25 @@ function render() {
         offset = 0;
         offsetplus = 3;
       }
-      render();
+      render(this);
     });
     decisionDiv.appendChild(decisionButton);
   }
   //createHintButton関数に以下の３つの情報を投げて、appendChildさせる
   if (selected != null) {
-    createHintButton("button1", 0, parent);
-    createHintButton("button2", 1, parent);
-    createHintButton("button3", 2, parent);
+    //押されたボタンのclassNameを取得
+    console.log(buttonClass);
+    console.log(buttonClass.className);
+    if (buttonClass.className != null) {
+      if (buttonClass.className.indexOf("decisionButton") != -1) {
+        var addclassName = buttonClass.className.replace(/decisionButton/g, "");
+        console.log(addclassName);
+      }
+    }
+
+    createHintButton("button1", 0, parent, addclassName);
+    createHintButton("button2", 1, parent, addclassName);
+    createHintButton("button3", 2, parent, addclassName);
 
     //その他ボタンの作成
     var next = document.createElement("button");
@@ -1109,6 +1119,7 @@ function render() {
       render();
     });
     parent.appendChild(next);
+
     console.log("aaaaaa" + kaigyouNum);
 
     var kaigyoButton = document.createElement("button");
@@ -1138,7 +1149,7 @@ function render() {
 }
 var nullNum = 0;
 
-function createHintButton(className, num, parent) {
+function createHintButton(className, num, parent, addclassName) {
   var hints = getHints();
   //getHints()で取得した候補の数と、numが同じになったらプログラムをそこで止める
   if (hints.length <= num) {
@@ -1158,11 +1169,28 @@ function createHintButton(className, num, parent) {
       type: "button",
       text: hints[num]
     };
-    array.push(decision);
+    // array.push(decision);
+    //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    alert(addclassName);
+    if (addclassName != null) {
+      array.splice(addclassName, 0, decision); // 二番目に挿入
+      console.log(array); // ['a', 'A', 'b', 'c']
+    } else {
+      array.push(decision);
+    }
+
+    alert(addclassName);
+    if (addclassName != null) {
+      array.splice(addclassName, 0, decision); // 二番目に挿入
+      console.log(array); // ['a', 'A', 'b', 'c']
+    } else {
+      array.push(decision);
+    }
+    //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
     previewArray.push(convertHintText(hints[num]));
     // console.log(previewArray);
-    render();
+    render(this);
     //プレビューDivを追加
     if (document.querySelector(".previewDiv") == null) {
       var previewDiv = document.createElement("div");
@@ -1181,6 +1209,7 @@ function createHintButton(className, num, parent) {
   button.textContent = hints[num];
   buttonDiv.appendChild(button);
   parent.appendChild(buttonDiv);
+
   // console.log(button.parentNode.parentNode);
   //タグの説明を表示をappendChild
   var buttonValue = hints[num];
