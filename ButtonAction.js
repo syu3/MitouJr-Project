@@ -1171,22 +1171,12 @@ function createHintButton(className, num, parent, addclassName) {
     };
     // array.push(decision);
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    alert(addclassName);
     if (addclassName != null) {
       array.splice(addclassName, 0, decision); // 二番目に挿入
       console.log(array); // ['a', 'A', 'b', 'c']
     } else {
       array.push(decision);
     }
-
-    alert(addclassName);
-    if (addclassName != null) {
-      array.splice(addclassName, 0, decision); // 二番目に挿入
-      console.log(array); // ['a', 'A', 'b', 'c']
-    } else {
-      array.push(decision);
-    }
-    //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
     previewArray.push(convertHintText(hints[num]));
     // console.log(previewArray);
