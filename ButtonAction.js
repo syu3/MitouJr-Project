@@ -1073,8 +1073,9 @@ function render(buttonClass) {
     var decisionButton = document.createElement(array[i].type); //決定したボタン
     decisionButton.className = "decisionButton" + (i + 1) + "";
     decisionButton.textContent = array[i].text;
-    var text = array[i].text;
     decisionButton.addEventListener("click", function() {
+      console.log(this.textContent);
+      var text = this.textContent;
       if (list[text]) {
         selected = text;
       } else {
@@ -1090,12 +1091,17 @@ function render(buttonClass) {
   if (selected != null) {
     //押されたボタンのclassNameを取得
     console.log(buttonClass);
-    console.log(buttonClass.className);
     if (buttonClass.className != null) {
-      if (buttonClass.className.indexOf("decisionButton") != -1) {
-        var addclassName = buttonClass.className.replace(/decisionButton/g, "");
-        console.log(addclassName);
+      if (buttonClass.className == "next") {
+        if (buttonClass.className.indexOf("decisionButton") != -1) {
+          var addclassName = buttonClass.className.replace(
+            /decisionButton/g,
+            ""
+          );
+          console.log(addclassName);
+        }
       }
+    } else {
     }
 
     createHintButton("button1", 0, parent, addclassName);
@@ -1116,7 +1122,7 @@ function render(buttonClass) {
         offsetplus = 3;
         nullNum = 0;
       }
-      render();
+      render(this);
     });
     parent.appendChild(next);
 
