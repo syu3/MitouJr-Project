@@ -52,6 +52,8 @@ var oneYpositon = 0;
 var Xpositon = 0;
 var moreNum = 0;
 var current = "";
+// グローバル変数
+var doubleClick = false; // クリック状態を保持するフラグ
 var previewNum = 0;
 var removePreviewNum = 0;
 var list = {
@@ -76,7 +78,7 @@ var list = {
   "<img": ["src", "id", "alt"],
   src: ["url.jpg", "", ""],
   "url.jpg": [">", "", ""],
-  "<p>": ["〇〇のサイトです。", "サイトを始めて1日です。", "プロフィールも見てください。"],
+  "<p>": ["文字をダブルクリックで入力"],
   "<font": ["size", "color", ""],
   size: ["3", "5", "10"],
   "1": ["<center>", "<p>", "<img"],
@@ -1084,6 +1086,26 @@ function render(buttonClass) {
     decisionButton.className = "decisionButton" + (i + 1) + "";
     decisionButton.textContent = array[i].text;
     decisionButton.addEventListener("click", function() {
+      // // クリックフラグが立っている状態でのクリック
+      // //     -> ダブルクリック
+      // if (doubleClick) {
+      //   console.log("doubleClick");
+      //   var textField = document.createElement("input");
+      //   textField.type = "text";
+      //   textField.classList.add("textField");
+      //   textField.maxlength = "20";
+      //   document.body.appendChild(textField);
+      //
+      //   doubleClick = false;
+      //   return;
+      // }
+      //
+      // // シングルクリックを受理、300ms間だけダブルクリック判定を残す
+      // doubleClick = true;
+      // setTimeout(function() {
+      //   // ダブルクリックによりclickedフラグがリセットされていない
+      //   //     -> シングルクリックだった
+      //   if (doubleClick) {
       console.log(this.textContent);
       var text = this.textContent;
       if (list[text]) {
@@ -1094,6 +1116,10 @@ function render(buttonClass) {
         offsetplus = 3;
       }
       render(this);
+      //   }
+      //
+      //   doubleClick = false;
+      // }, 300);
     });
     decisionDiv.appendChild(decisionButton);
   }
@@ -1243,6 +1269,7 @@ function comment(commentName, num, hints, buttonDiv) {
   commentText.classList.add(commentName);
   buttonDiv.appendChild(commentText);
 }
+
 //決定されたコードをちゃんとしたコードに変更する関数
 function convertHintText(hint) {
   if (hint == "href") {
