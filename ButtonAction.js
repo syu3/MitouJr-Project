@@ -996,6 +996,15 @@ function more() {
   // }
 }
 
+function deleteAction(addclassName, ButtonClassName) {
+  console.log(addclassName);
+  array.splice(addclassName - 1, 1);
+  previewArray.splice(addclassName - 1, 1);
+  console.log(array);
+  console.log(previewArray);
+  render();
+}
+
 var offset = 0;
 var offsetplus = 3;
 
@@ -1020,6 +1029,7 @@ function getHints() {
 // var renderNum = 0; //render関数が何回呼ばれたか
 var selected = null;
 function render(buttonClass) {
+  console.log(buttonClass);
   // console.log(array);
   // console.log(getHints());
   // console.log("render関数");
@@ -1092,7 +1102,7 @@ function render(buttonClass) {
     //押されたボタンのclassNameを取得
     console.log(buttonClass);
     if (buttonClass.className != null) {
-      if (buttonClass.className == "next") {
+      if (buttonClass.className != "next") {
         if (buttonClass.className.indexOf("decisionButton") != -1) {
           var addclassName = buttonClass.className.replace(
             /decisionButton/g,
@@ -1103,7 +1113,7 @@ function render(buttonClass) {
       }
     } else {
     }
-
+    console.log(addclassName);
     createHintButton("button1", 0, parent, addclassName);
     createHintButton("button2", 1, parent, addclassName);
     createHintButton("button3", 2, parent, addclassName);
@@ -1133,6 +1143,14 @@ function render(buttonClass) {
     kaigyoButton.textContent = "改行";
     kaigyoButton.addEventListener("click", kaigyo);
     parent.appendChild(kaigyoButton);
+
+    var deleteButton = document.createElement("button");
+    deleteButton.classList.add("deleteButton");
+    deleteButton.textContent = "削除";
+    deleteButton.addEventListener("click", function() {
+      deleteAction(addclassName, buttonClass.className);
+    });
+    parent.appendChild(deleteButton);
 
     // //候補を表示する４つに分かれた線
     // var nextLine = document.createElement("img");
@@ -1186,7 +1204,7 @@ function createHintButton(className, num, parent, addclassName) {
 
     previewArray.push(convertHintText(hints[num]));
     // console.log(previewArray);
-    render(this);
+    render(className);
     //プレビューDivを追加
     if (document.querySelector(".previewDiv") == null) {
       var previewDiv = document.createElement("div");
